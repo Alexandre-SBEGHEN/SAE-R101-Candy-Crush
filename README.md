@@ -9,6 +9,7 @@ Un jeu Candy Crush like réalisé en C++ entièrement jouable dans le terminal d
 - et pour finir les commandes de base (status, add, commit, etc)
 
 ### Idée de structure du menu de l'écran titre ?
+```
 .
 ├── 1 - Jouer
 ├── 2 - Table des High Scores
@@ -27,3 +28,4 @@ Un jeu Candy Crush like réalisé en C++ entièrement jouable dans le terminal d
 ├── A propos
 │   └── 1 - Retour
 └── Quitter
+```
