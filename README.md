@@ -20,6 +20,8 @@ Un jeu Candy Crush like réalisé en C++ entièrement jouable dans le terminal d
 │   ├── 1 - Langue
 │   │   ├── 1 - Francais
 │   │   └── 2 - Anglais
+│   │   └── 3 - Personnalisé
+│   │   └── 4 - Back
 │   ├── 2 - Mode de déplacement
 │   │   ├── 1 - Case par case (séquence de touches)
 │   │   ├── 2 - Instantané (coordonnées)
