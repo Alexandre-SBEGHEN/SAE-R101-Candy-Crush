@@ -25,7 +25,7 @@ Un jeu Candy Crush like réalisé en C++ entièrement jouable dans le terminal d
 │   │   ├── 2 - Instantané (coordonnées)
 │   │   └── 3 - Retour
 │   └── 4 - Retour
-├── A propos
+├── 4 - A propos
 │   └── 1 - Retour
 └── Quitter
 ```
