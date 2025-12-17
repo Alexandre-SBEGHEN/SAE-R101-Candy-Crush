@@ -27,7 +27,7 @@ Un jeu Candy Crush like réalisé en C++ entièrement jouable dans le terminal d
 │   └── 4 - Retour
 ├── 4 - A propos
 │   └── 1 - Retour
-└── Quitter
+└── 5 - Quitter
 ```
 
 ### Couleurs cout
