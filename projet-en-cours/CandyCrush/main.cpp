@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ctime>
 // Modules
 #include <inGameDisplay.h>
 
@@ -7,8 +8,7 @@ using namespace std;
 enum StatusGame StatusDuJeu = IDLE;
 maPosition PositionActuelle;
 
-int main()
-{
+void TestGridAffichage() {
     unsigned int Taille = 12;
     mat Tableau;
     EtatMat TableauEtat;
@@ -22,6 +22,13 @@ int main()
     StatusDuJeu = MOUVEMENT;
 
     displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle);
+}
+
+int main()
+{
+    srand(time(0));
+
+    TestGridAffichage();
 
     cout << "Hello World!" << endl;
     return 0;
