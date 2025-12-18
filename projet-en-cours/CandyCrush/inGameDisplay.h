@@ -4,34 +4,11 @@
 #include <ctime>
 #include <iomanip>
 
+#include <typeList.h>
+
 using namespace std;
 
-//------------------------------ On définis les types custom
-// Matrice des valeurs des cases de la grille
 unsigned NbCandies = 9; // Nombre maximum de la valeur du bonbon
-typedef vector <unsigned> line;
-typedef vector <line> mat;
-// Type position custom
-struct maPosition {
-    unsigned abs;
-    unsigned ord;
-};
-// Matrice des états des cases de la grille
-enum StatusCase {
-    NORMAL,
-    GLACE,
-    GLACE_FAIBLE,
-};
-typedef vector <enum StatusCase> Etatline;
-typedef vector <Etatline> EtatMat;
-
-// Enum des status possible du jeu
-enum StatusGame {
-    IDLE, // Rien
-    ORD, // Lorsque le joueur est entrain de choisir l'ordonnee de la case
-    ABS, // Lorsque le joueur est entrain de choisir l'abscisse de la case
-    MOUVEMENT, // Lorsque le joueur est entrain de choisir le mouvement à réaliser
-};
 
 // Liste des couleurs
 const unsigned KReset   (0);
@@ -157,33 +134,6 @@ void initEtatGrid(EtatMat & TableauEtat, unsigned Taille) {
             int choosen = (rand()%3)+1;
             if (choosen < 3) TableauEtat[ord][abs] = NORMAL;
             else TableauEtat[ord][abs] = GLACE;
-
         }
     }
-}
-
-//------------------------------ Main (A enlever lorsque l'on transformera le script en une librairy?)
-int main()
-{
-
-    // Randomize
-    srand(time(0));
-
-    //------------------------------ Variables
-    enum StatusGame Status = IDLE;
-    mat Tableau;
-    EtatMat TableauEtat;
-    unsigned Taille = 12;
-
-    // Test
-    maPosition Pos;
-    Pos.ord = 4;
-    Pos.abs = 4;
-
-    Status = MOUVEMENT;
-    initGrid(Tableau, Taille);
-    initEtatGrid(TableauEtat, Taille);
-    displayGrid(Tableau, TableauEtat, Status, Pos);
-
-    return 0;
 }
