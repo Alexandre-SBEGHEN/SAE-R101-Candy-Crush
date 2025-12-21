@@ -1,6 +1,11 @@
 # SAE-R101-Candy-Crush
 Un jeu Candy Crush like réalisé en C++ entièrement jouable dans le terminal de commandes
 
+## Important
+Nom du fichier final : ```TD_1_E_2_METERY-DROUIN-Audren_MOYENIN-Nicolas_SBEGHEN-MAGNIN-Alexandre.zip```
+
+## Infos Diverses
+
 ### Comment utiliser git ? tuto par Alex :)
 - Générer la clé ssh (se placer au préalable dans ~) : https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
 - Faire un cat de la clé (PUBLIQUE !!) et la copier coller dans 'Key' quand vous créez un token
