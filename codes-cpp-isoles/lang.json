@@ -1,0 +1,16 @@
+{
+    "en": {
+        "title_screen": {
+            "main": {
+                "play": "Play",
+                "highscores": "highscore",
+                "settings": "Settings",
+                "about": "About",
+                "quit": "Quit"
+            },
+            "highscores": {
+                
+            }
+        }
+    }
+}
