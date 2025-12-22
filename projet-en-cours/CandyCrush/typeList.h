@@ -1,6 +1,9 @@
 #include <vector>
 using namespace std;
 
+#ifndef TYPE_LIST
+#define TYPE_LIST
+
 //------------------------------ On définis les types custom
 // Enum des status possible du jeu
 enum StatusGame {
@@ -25,3 +28,5 @@ enum StatusCase {
 };
 typedef vector <enum StatusCase> Etatline;
 typedef vector <Etatline> EtatMat;
+
+#endif
