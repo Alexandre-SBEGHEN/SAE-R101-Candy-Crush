@@ -1,3 +1,9 @@
+/**
+ *  @date : 23 décembre 2025
+ *  @author : Audren Metery-Drouin
+ *  @Brief : Les fonctions utilisées pour afficher la grille
+**/
+
 #include <iostream>
 #include <vector>
 #include <QThread>
@@ -6,6 +12,27 @@
 
 #include <inGameDisplay.h>
 
+using namespace std;
+
+//------------------------------ Constantes
+// Nombre maximum de la valeur du bonbon
+const unsigned NbCandies = 9;
+
+// Liste des couleurs
+const unsigned KReset   (0);
+const unsigned KNoir    (30);
+
+const unsigned KRouge   (31);
+const unsigned KVert    (32);
+const unsigned KJaune   (33);
+const unsigned KBleu    (34);
+const unsigned KMagenta (35);
+const unsigned KCyan    (36);
+const unsigned KRougeClair (91);
+const unsigned KVertClair  (92);
+const unsigned KBeige      (93);
+
+//------------------------------ Fonctions d'affichage
 void couleur (const unsigned & coul) {
     cout << "\033[" << coul <<"m";
 }
@@ -32,7 +59,7 @@ void clearScreen () {
     cout << "\033[H\033[2J";
 }
 
-void displayGrid(mat Tableau, EtatMat TableauEtat, enum StatusGame Status, maPosition CurrentPos) {
+void displayGrid(mat Tableau, EtatMat TableauEtat, enum StatusGame Status, maPosition CurrentPos, enum graphisme Details) {
 
     // Affichage des abscisses
     if (Status == ABS || Status == MOUVEMENT) {
@@ -85,11 +112,14 @@ void displayGrid(mat Tableau, EtatMat TableauEtat, enum StatusGame Status, maPos
             // Cell Color
             couleurCase(TableauEtat[ord][abs]);
             // Write cell candy number
-            //cout << setw(2) << Tableau[ord][abs] << ' ';
-            if ((rand()%2)+1 == 1)
-                cout << setw(2) << " 🍬";
-            else
-                cout << setw(2) << " 🍫";
+            if (Details == LOW)
+                cout << setw(2) << Tableau[ord][abs] << ' ';
+            else if (Details == HIGH) {
+                if ((rand()%2)+1 == 1)
+                    cout << setw(2) << " 🍬";
+                else
+                    cout << setw(2) << " 🍫";
+            }
             // Close cell
             couleur(KReset);
             cout << '|';

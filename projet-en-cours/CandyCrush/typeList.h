@@ -1,7 +1,13 @@
+/**
+ *  @date : 23 décembre 2025
+ *  @author : Audren Metery-Drouin
+ *  @Brief : Les types ou struct custom utilisés par les autres scripts
+**/
+
 #include <vector>
 using namespace std;
 
-#ifndef TYPE_LIST
+#ifndef TYPE_LIST // Pour éviter de définir plusieurs fois les types dans le main.cpp
 #define TYPE_LIST
 
 //------------------------------ On définis les types custom
@@ -20,13 +26,28 @@ struct maPosition {
     unsigned abs;
     unsigned ord;
 };
-// Matrice des états des cases de la grille
+// Enum des états des cases de la grille
 enum StatusCase {
     NORMAL,
     GLACE,
     GLACE_FAIBLE,
 };
+// Matrice des états des cases de la grille
 typedef vector <enum StatusCase> Etatline;
 typedef vector <Etatline> EtatMat;
+
+// Enum des niveaux de graphismes
+enum graphisme {
+    LOW, // Sous forme de chiffres
+    HIGH, // Sous forme d'émojis
+};
+
+// Enum des différentes gravités possibles
+enum gravType {
+    UP,
+    DOWN,
+    LEFT,
+    RIGHT,
+};
 
 #endif

@@ -1,27 +1,12 @@
+/**
+ *  @date : 23 décembre 2025
+ *  @author : Audren Metery-Drouin
+ *  @Brief : Les fonctions utilisées pour afficher la grille
+**/
+
 #include <typeList.h>
 
-using namespace std;
-
-const unsigned NbCandies = 9; // Nombre maximum de la valeur du bonbon
-
-// Liste des couleurs
-const unsigned KReset   (0);
-const unsigned KNoir    (30);
-
-const unsigned KRouge   (31);
-const unsigned KVert    (32);
-const unsigned KJaune   (33);
-const unsigned KBleu    (34);
-const unsigned KMagenta (35);
-const unsigned KCyan    (36);
-const unsigned KRougeClair (91);
-const unsigned KVertClair  (92);
-const unsigned KBeige      (93);
-
-// QThread::msleep(500);
-
 //------------------------------ Fonctions d'affichage
-
 /**
  * @brief Met en couleur le terminal selon la valeur choisis
  * @param coul La valeur de la couleur choisis
@@ -52,10 +37,9 @@ void clearScreen ();
  * @param Status Ce que le joueur est actuellement en train de faire
  * @param CurrentPos La position actuelle sélectionner
  */
-void displayGrid(mat Tableau, EtatMat TableauEtat, enum StatusGame Status, maPosition CurrentPos);
+void displayGrid(mat Tableau, EtatMat TableauEtat, enum StatusGame Status, maPosition CurrentPos, enum graphisme Details);
 
 //------------------------------ Fonctions d'initialisation des grilles
-
 /**
  * @brief Initialisation des valeurs de la grille
  * @param Tableau La Grille à initialiser

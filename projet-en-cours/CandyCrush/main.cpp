@@ -1,11 +1,19 @@
+/**
+ *  @date : 23 décembre 2025
+ *  @author : Audren Metery-Drouin
+ *  @Brief : Script main pour temporairement tester les librairies custom
+**/
+
 #include <iostream>
 #include <ctime>
-// Modules
+
 #include <inGameDisplay.h>
+#include <updateEtat.h>
 
 using namespace std;
 
 enum StatusGame StatusDuJeu = IDLE;
+enum graphisme Details = LOW;
 maPosition PositionActuelle;
 
 void TestGridAffichage() {
@@ -20,8 +28,9 @@ void TestGridAffichage() {
     PositionActuelle.ord = 3;
 
     StatusDuJeu = MOUVEMENT;
+    Details = LOW;
 
-    displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle);
+    displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details);
 }
 
 int main()
