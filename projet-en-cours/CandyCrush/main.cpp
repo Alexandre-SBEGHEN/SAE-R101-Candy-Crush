@@ -23,28 +23,31 @@ void TestGridAffichage() {
 
     initGrid(Tableau, Taille);
     initEtatGrid(TableauEtat, Taille);
-    displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details);
 
     while (true) {
         //-------------------------- script TEMPORAIRE (sera remplacer par le control.h)
         //------ On choisis la position
+        PositionActuelle.abs = Taille;
+        PositionActuelle.ord = Taille;
         string tmp;
-        // On choisis l'abscisse
-        cout << "choisis abs" << endl;
-        StatusDuJeu = ABS;
-        displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details);
-        cin >> tmp;
-        PositionActuelle.abs = stoi(tmp);
 
         // On choisis l'ordonnée
-        cout << "choisis ord" << endl;
         StatusDuJeu = ORD;
         displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details);
+        cout << "choisis ord" << endl;
         cin >> tmp;
-        PositionActuelle.abs = stoi(tmp);
+        PositionActuelle.ord = stoi(tmp)-1;
+
+        // On choisis l'abscisse
+        StatusDuJeu = ABS;
+        displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details);
+        cout << "choisis abs" << endl;
+        cin >> tmp;
+        PositionActuelle.abs = stoi(tmp)-1;
 
         //------ On choisis la direction
         StatusDuJeu = MOUVEMENT;
+        displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details);
 
         //------ On échange les bonbons
 

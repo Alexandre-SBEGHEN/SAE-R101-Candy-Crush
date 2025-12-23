@@ -61,6 +61,9 @@ void clearScreen () {
 
 void displayGrid(mat Tableau, EtatMat TableauEtat, enum StatusGame Status, maPosition CurrentPos, enum graphisme Details) {
 
+    // On efface l'écran
+    clearScreen();
+
     // Affichage des abscisses
     if (Status == ABS || Status == MOUVEMENT) {
         couleur(KVert);
@@ -77,11 +80,11 @@ void displayGrid(mat Tableau, EtatMat TableauEtat, enum StatusGame Status, maPos
         }
         cout << endl;
     }
-    // Skip line if no abscisse displayed
+    // On skip la ligne si il n'y a pas d'abscisse à afficher
     if (Status != ABS && Status != MOUVEMENT) cout << endl;
 
     // Affichage des ordonnées
-    if (Status == ORD || Status == MOUVEMENT) {
+    if (Status == ORD || Status == ABS || Status == MOUVEMENT) {
         couleur(KVert);
         cout << "Ordonnée v" << endl;
     } else cout << endl;
@@ -90,7 +93,7 @@ void displayGrid(mat Tableau, EtatMat TableauEtat, enum StatusGame Status, maPos
     for (size_t ord=0; ord < Tableau.size(); ord=ord+1) {
 
         // Indice de l'ordonné
-        if (Status == ORD || Status == MOUVEMENT) {
+        if (Status == ORD || Status == ABS || Status == MOUVEMENT) {
             couleur(KVert);
             cout << string(8, ' ');
             if (ord == CurrentPos.ord) {
