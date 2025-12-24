@@ -1,5 +1,5 @@
 /**
- *  @date : 23 décembre 2025
+ *  @date : 24 décembre 2025
  *  @author : Audren Metery-Drouin
  *  @Brief : Les fonctions utilisées pour afficher la grille
 **/
@@ -51,8 +51,8 @@ void couleurBonbon(unsigned Bonbon) {
 }
 
 void couleurCase(enum StatusCase status) {
-    if (status == GLACE) couleur(KBleu+10);
-    else if (status == GLACE_FAIBLE) couleur(KCyan+10);
+    if (status == GLACE) couleur(KCyan+10);
+    else if (status == GLACE_FAIBLE) couleur(KBleu+10);
 }
 
 void clearScreen () {
@@ -114,14 +114,23 @@ void displayGrid(mat Tableau, EtatMat TableauEtat, enum StatusGame Status, maPos
             couleurBonbon(Tableau[ord][abs]);
             // Cell Color
             couleurCase(TableauEtat[ord][abs]);
+            if (TableauEtat[ord][abs] == GLACE || TableauEtat[ord][abs] == GLACE_FAIBLE) {
+                // If cell is ice then we color the text black to see correctly
+                couleur(KNoir);
+            }
             // Write cell candy number
-            if (Details == LOW)
-                cout << setw(2) << Tableau[ord][abs] << ' ';
-            else if (Details == HIGH) {
-                if ((rand()%2)+1 == 1)
-                    cout << setw(2) << " 🍬";
-                else
-                    cout << setw(2) << " 🍫";
+            if (Tableau[ord][abs] != KImpossible) {
+                if (Details == LOW)
+                    cout << setw(2) << Tableau[ord][abs] << ' ';
+                else if (Details == HIGH) {
+                    if ((rand()%2)+1 == 1)
+                        cout << setw(2) << " 🍬";
+                    else
+                        cout << setw(2) << " 🍫";
+                }
+            } else {
+                // Case vide
+                cout << string(3, ' ');
             }
             // Close cell
             couleur(KReset);

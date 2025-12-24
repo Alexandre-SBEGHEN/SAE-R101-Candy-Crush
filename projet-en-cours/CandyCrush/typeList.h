@@ -1,5 +1,5 @@
 /**
- *  @date : 23 décembre 2025
+ *  @date : 24 décembre 2025
  *  @author : Audren Metery-Drouin
  *  @Brief : Les types ou struct custom utilisés par les autres scripts
 **/
@@ -9,6 +9,8 @@ using namespace std;
 
 #ifndef TYPE_LIST // Pour éviter de définir plusieurs fois les types dans le main.cpp
 #define TYPE_LIST
+
+const unsigned KImpossible = 0;
 
 //------------------------------ On définis les types custom
 // Enum des status possible du jeu

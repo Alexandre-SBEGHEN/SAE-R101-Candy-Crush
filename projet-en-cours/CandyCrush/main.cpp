@@ -6,18 +6,21 @@
 
 #include <iostream>
 #include <ctime>
+#include <thread>
+#include <chrono>
 
 #include <inGameDisplay.h>
 #include <updateEtat.h>
 
 using namespace std;
 
-enum StatusGame StatusDuJeu = IDLE;
-enum graphisme Details = LOW;
+StatusGame StatusDuJeu = IDLE;
+graphisme Details = LOW;
 maPosition PositionActuelle;
+gravType GravDirection = UP;
 
 void TestGridAffichage() {
-    unsigned int Taille = 12;
+    unsigned int Taille = 6;
     mat Tableau;
     EtatMat TableauEtat;
 
@@ -48,8 +51,45 @@ void TestGridAffichage() {
         //------ On choisis la direction
         StatusDuJeu = MOUVEMENT;
         displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details);
+        cout << "choisis direction" << endl;
+        char mouvementChoisis;
+        cin >> mouvementChoisis;
 
         //------ On échange les bonbons
+        maPosition AutrePosition;
+        if (mouvementChoisis == 'z') {
+            // Haut
+            unsigned bonbonTmp = Tableau[PositionActuelle.ord][PositionActuelle.abs];
+            Tableau[PositionActuelle.ord][PositionActuelle.abs] = Tableau[PositionActuelle.ord-1][PositionActuelle.abs];
+            Tableau[PositionActuelle.ord-1][PositionActuelle.abs] = bonbonTmp;
+            // Autre position
+            AutrePosition.ord = PositionActuelle.ord-1;
+            AutrePosition.abs = PositionActuelle.abs;
+        } else if (mouvementChoisis == 's') {
+            // Bas
+            unsigned bonbonTmp = Tableau[PositionActuelle.ord][PositionActuelle.abs];
+            Tableau[PositionActuelle.ord][PositionActuelle.abs] = Tableau[PositionActuelle.ord+1][PositionActuelle.abs];
+            Tableau[PositionActuelle.ord+1][PositionActuelle.abs] = bonbonTmp;
+            // Autre position
+            AutrePosition.ord = PositionActuelle.ord+1;
+            AutrePosition.abs = PositionActuelle.abs;
+        } else if (mouvementChoisis == 'q') {
+            // Gauche
+            unsigned bonbonTmp = Tableau[PositionActuelle.ord][PositionActuelle.abs];
+            Tableau[PositionActuelle.ord][PositionActuelle.abs] = Tableau[PositionActuelle.ord][PositionActuelle.abs-1];
+            Tableau[PositionActuelle.ord][PositionActuelle.abs-1] = bonbonTmp;
+            // Autre position
+            AutrePosition.ord = PositionActuelle.ord;
+            AutrePosition.abs = PositionActuelle.abs-1;
+        } else if (mouvementChoisis == 'd') {
+            // Droite
+            unsigned bonbonTmp = Tableau[PositionActuelle.ord][PositionActuelle.abs];
+            Tableau[PositionActuelle.ord][PositionActuelle.abs] = Tableau[PositionActuelle.ord][PositionActuelle.abs+1];
+            Tableau[PositionActuelle.ord][PositionActuelle.abs+1] = bonbonTmp;
+            // Autre position
+            AutrePosition.ord = PositionActuelle.ord;
+            AutrePosition.abs = PositionActuelle.abs+1;
+        }
 
         //-------------------------- On élimine les chaînes de bonbons et on applique la gravité
         //------ Première position
@@ -73,7 +113,37 @@ void TestGridAffichage() {
             // On élimine la ligne
             removalInRow(Tableau, TableauEtat, PositionActuelle, howManyRow);
         }
+        //------ Seconde position
+        howManyColumn = 0;
+        columnFound = atLeastThreeInAColumn(Tableau, AutrePosition, howManyColumn);
+        howManyRow = 0;
+        rowFound = atLeastThreeInARow(Tableau, AutrePosition, howManyRow);
+        if (columnFound && rowFound) {
+            // Ligne et colonne trouvé en même temps, on élimine donc la chaîne la plus longue
+            if (howManyColumn >= howManyRow) {
+                // On élimine la colonne
+                removalInColumn(Tableau, TableauEtat, AutrePosition, howManyColumn);
+            } else {
+                // On élimine la ligne
+                removalInRow(Tableau, TableauEtat, AutrePosition, howManyRow);
+            }
+        } else if (columnFound) {
+            // On élimine la colonne
+            removalInColumn(Tableau, TableauEtat, AutrePosition, howManyColumn);
+        } else if (rowFound) {
+            // On élimine la ligne
+            removalInRow(Tableau, TableauEtat, AutrePosition, howManyRow);
+        }
 
+        //-------------------------- On applique la gravité
+
+        // Debug
+        StatusDuJeu = IDLE;
+        displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details);
+        cout << "colonne trouvé: " << columnFound << ", de taille: " << howManyColumn << endl;
+        cout << "ligne trouvé: " << rowFound << ", de taille: " << howManyRow << endl;
+
+        this_thread::sleep_for(chrono::milliseconds(10000));
     }
 
 }

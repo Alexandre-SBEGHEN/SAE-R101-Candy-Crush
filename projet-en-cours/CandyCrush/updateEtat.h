@@ -1,5 +1,5 @@
 /**
- *  @date : 23 décembre 2025
+ *  @date : 24 décembre 2025
  *  @author : Audren Metery-Drouin
  *  @Brief : Les fonctions utilisées pour éliminer les bonbons et cases et appliquer la gravité
 **/
@@ -22,6 +22,16 @@ bool atLeastThreeInAColumn(const mat & Grid, maPosition & pos, unsigned & howMan
  * @param howMany La valeur retourner donnant la taille de la ligne trouvé
  */
 bool atLeastThreeInARow(const mat & Grid, maPosition & pos, unsigned & howMany);
+
+//------------------------------ Fonction pour éliminer un bonbon dans une case
+/**
+ * @brief enlève le bonbon dans une case de la grille
+ * @param Grid La grille
+ * @param EtatGrid La matrice des états de la grille
+ * @param ord L'ordonnée de la case
+ * @param abs L'abscisse de la case
+ */
+void removalInCell(mat & Grid, EtatMat & EtatGrid, unsigned ord, unsigned abs);
 
 //------------------------------ Fonctions pour éliminer les lignes de bonbons
 /**
