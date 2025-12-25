@@ -1,5 +1,5 @@
 /**
- *  @date : 24 décembre 2025
+ *  @date : 25 décembre 2025
  *  @author : Audren Metery-Drouin
  *  @Brief : Les fonctions utilisées pour éliminer les bonbons et cases et appliquer la gravité
 **/
@@ -120,6 +120,78 @@ void removalInRow(mat & Grid, EtatMat & EtatGrid, maPosition pos, unsigned howMa
 }
 
 //------------------------------ Fonctions pour faire tomber les bonbons
-void graviter(mat & Grid, EtatMat & EtatGrid, enum gravType gravDirection) {
+bool graviter(mat & Grid, EtatMat & EtatGrid, enum gravType gravDirection) {
+    bool change = false;
 
+    if (gravDirection == UP || gravDirection == LEFT) {
+        // We start scanning the grid from the top left corner
+        for (unsigned ord=0; ord < Grid.size(); ord++) {
+            for (unsigned abs=0; abs < Grid.size(); abs++) {
+                // Make sure the current cell is not empty
+                if (Grid[ord][abs] != KImpossible) {
+                    if (gravDirection == UP) {
+                        //--------------------- Up gravity
+                        // Check if the cell on top of the current cell is empty
+                        if (ord > 0) {
+                            if (Grid[ord-1][abs] == KImpossible) {
+                                // Make the number fall onto that cell
+                                Grid[ord-1][abs] = Grid[ord][abs];
+                                Grid[ord][abs] = KImpossible;
+                                // Update variable
+                                change = true;
+                            }
+                        }
+                    } else {
+                        //--------------------- Left gravity
+                        // Check if the cell onto the left of the current cell is empty
+                        if (abs > 0) {
+                            if (Grid[ord][abs-1] == KImpossible) {
+                                // Make the number fall onto that cell
+                                Grid[ord][abs-1] = Grid[ord][abs];
+                                Grid[ord][abs] = KImpossible;
+                                // Update variable
+                                change = true;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    } else {
+        // We start scanning the grid from the bottom right corner
+        for (int ord = int(Grid.size())-1; ord >= 0; ord--) {
+            for (int abs = int(Grid.size())-1; abs >= 0; abs--) {
+                // Make sure the current cell is not empty
+                if (Grid[ord][abs] != KImpossible) {
+                    if (gravDirection == DOWN) {
+                        //--------------------- Down gravity
+                        // Check if the cell on top of the current cell is empty
+                        if (ord < int(Grid.size())-1) {
+                            if (Grid[ord+1][abs] == KImpossible) {
+                                // Make the number fall onto that cell
+                                Grid[ord+1][abs] = Grid[ord][abs];
+                                Grid[ord][abs] = KImpossible;
+                                // Update variable
+                                change = true;
+                            }
+                        }
+                    } else {
+                        //--------------------- Right gravity
+                        // Check if the cell onto the left of the current cell is empty
+                        if (abs < int(Grid[ord].size())-1) {
+                            if (Grid[ord][abs+1] == KImpossible) {
+                                // Make the number fall onto that cell
+                                Grid[ord][abs+1] = Grid[ord][abs];
+                                Grid[ord][abs] = KImpossible;
+                                // Update variable
+                                change = true;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    return change;
 }

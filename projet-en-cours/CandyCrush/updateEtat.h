@@ -54,9 +54,9 @@ void removalInRow(mat & Grid, EtatMat & EtatGrid, maPosition pos, unsigned howMa
 
 //------------------------------ Fonction pour faire tomber les bonbons
 /**
- * @brief Applique la gravité aux bonbons de la grille pour les faire tomber
+ * @brief Applique la gravité aux bonbons de la grille pour les faire tomber et renvoie un booléen pour savoir si un bonbon est tomber
  * @param Grid La grille
  * @param EtatGrid La matrice des états des cases de la grille
  * @param gravDirection La direction de la gravité
  */
-void graviter(mat & Grid, EtatMat & EtatGrid, enum gravType gravDirection);
+bool graviter(mat & Grid, EtatMat & EtatGrid, enum gravType gravDirection);

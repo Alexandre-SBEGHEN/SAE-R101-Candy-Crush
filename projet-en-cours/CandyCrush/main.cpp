@@ -1,5 +1,5 @@
 /**
- *  @date : 23 décembre 2025
+ *  @date : 25 décembre 2025
  *  @author : Audren Metery-Drouin
  *  @Brief : Script main pour temporairement tester les librairies custom
 **/
@@ -55,6 +55,8 @@ void TestGridAffichage() {
         char mouvementChoisis;
         cin >> mouvementChoisis;
 
+        StatusDuJeu = IDLE;
+
         //------ On échange les bonbons
         maPosition AutrePosition;
         if (mouvementChoisis == 'z') {
@@ -92,6 +94,9 @@ void TestGridAffichage() {
         }
 
         //-------------------------- On élimine les chaînes de bonbons et on applique la gravité
+        //------ On garde les ancienne versions des tableaux pour pouvoir faire une animation
+        mat AncienTableau = Tableau;
+        EtatMat AncienTableauEtat = TableauEtat;
         //------ Première position
         unsigned int howManyColumn;
         bool columnFound = atLeastThreeInAColumn(Tableau, PositionActuelle, howManyColumn);
@@ -113,6 +118,24 @@ void TestGridAffichage() {
             // On élimine la ligne
             removalInRow(Tableau, TableauEtat, PositionActuelle, howManyRow);
         }
+
+        // Animation (Position 1)
+        if (columnFound || rowFound) {
+            // Old table
+            displayGrid(AncienTableau, AncienTableauEtat, StatusDuJeu, PositionActuelle, Details);
+            this_thread::sleep_for(chrono::milliseconds(500));
+            for (unsigned i=0; i<2; i++) {
+                // New table
+                displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details);
+                // Cooldown
+                this_thread::sleep_for(chrono::milliseconds(500));
+                // Old table
+                displayGrid(AncienTableau, AncienTableauEtat, StatusDuJeu, PositionActuelle, Details);
+                // Cooldown
+                this_thread::sleep_for(chrono::milliseconds(500));
+            }
+        }
+
         //------ Seconde position
         howManyColumn = 0;
         columnFound = atLeastThreeInAColumn(Tableau, AutrePosition, howManyColumn);
@@ -135,15 +158,40 @@ void TestGridAffichage() {
             removalInRow(Tableau, TableauEtat, AutrePosition, howManyRow);
         }
 
+        // Animation (Position 2)
+        if (columnFound || rowFound) {
+            // Old table
+            displayGrid(AncienTableau, AncienTableauEtat, StatusDuJeu, PositionActuelle, Details);
+            this_thread::sleep_for(chrono::milliseconds(500));
+            for (unsigned i=0; i<2; i++) {
+                // New table
+                displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details);
+                // Cooldown
+                this_thread::sleep_for(chrono::milliseconds(500));
+                // Old table
+                displayGrid(AncienTableau, AncienTableauEtat, StatusDuJeu, PositionActuelle, Details);
+                // Cooldown
+                this_thread::sleep_for(chrono::milliseconds(500));
+            }
+        }
+
+        // Display New table
+        displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details);
+
         //-------------------------- On applique la gravité
+        bool change = true;
+        while (change) {
+            change = graviter(Tableau, TableauEtat, GravDirection);
+            if (change) {
+                this_thread::sleep_for(chrono::milliseconds(500));
+                displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details);
+            }
+        }
 
         // Debug
-        StatusDuJeu = IDLE;
-        displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details);
         cout << "colonne trouvé: " << columnFound << ", de taille: " << howManyColumn << endl;
         cout << "ligne trouvé: " << rowFound << ", de taille: " << howManyRow << endl;
-
-        this_thread::sleep_for(chrono::milliseconds(10000));
+        this_thread::sleep_for(chrono::milliseconds(3000));
     }
 
 }
