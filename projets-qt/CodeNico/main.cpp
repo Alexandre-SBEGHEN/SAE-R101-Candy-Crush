@@ -60,34 +60,7 @@ void displayGrid(const mat & grid)
 }
 
 
-// -------------- Mouvements --------------//
-int makeAMove(mat & grid, const maPosition & pos, const char & direction)
-{
-    int tRow = static_cast<int>(pos.abs);
-    int tCol = static_cast<int>(pos.ord);
 
-    switch(direction)
-    {
-    case 'Z': tRow -= 1; break;
-    case 'S': tRow += 1; break;
-    case 'Q': tCol -= 1; break;
-    case 'D': tCol += 1; break;
-    default:
-        cout << "Direction invalide !" << endl;
-        return 1;
-    }
-
-    // Vérification des limites
-    if(tRow < 0 || tRow >= static_cast<int>(grid.size()) ||
-        tCol < 0 || tCol >= static_cast<int>(grid[0].size()))
-    {
-        cout << "Mouvement hors grille !" << endl;
-        return 1;
-    }
-
-    swap(grid[pos.abs][pos.ord], grid[tRow][tCol]);
-    return 0;
-}
 
 
 //-------------- Détection horizontal --------------//
@@ -238,30 +211,117 @@ void removeColRow(mat & grid)
 
 bool moveIsValid(mat & grid, const maPosition & pos, char direction)
 {
-    // Sauvegarde de la grille
+    // Calcul de la case cible
+    int tRow = static_cast<int>(pos.abs);
+    int tCol = static_cast<int>(pos.ord);
+
+    switch(direction)
+    {
+    case 'Z': tRow--; break;
+    case 'S': tRow++; break;
+    case 'Q': tCol--; break;
+    case 'D': tCol++; break;
+    default: return false;
+    }
+
+    // Hors grille
+    if(tRow < 0 || tRow >= static_cast<int>(grid.size()) ||
+        tCol < 0 || tCol >= static_cast<int>(grid[0].size()))
+        return false;
+
+    // Sauvegarde
     mat save = grid;
 
-    // Essayer le mouvement
-    if (makeAMove(grid, pos, direction) != 0)
-        return false; // mouvement invalide (hors grille)
+    // Effectuer l'Ã©change
+    swap(grid[pos.abs][pos.ord], grid[tRow][tCol]);
 
     maPosition p;
     unsigned howMany;
 
-    // Tester s'il y a au moins un alignement
+    // Tester alignements
     bool ok = atLeastThreeInARow(grid, p, howMany)
               || atLeastThreeInAColumn(grid, p, howMany);
 
-    // Si pas d'alignement --> on annule le mouvement
-    if (!ok) {
+    // Annuler si invalide
+    if(!ok)
         grid = save;
-    }
 
     return ok;
 }
 
 
- //-------------- Fonction jouer --------------//
+// -------------- Mouvements --------------//
+struct swapResult {
+    bool ok;            // le mouvement est valide ?
+    maPosition p1;      // première case
+    maPosition p2;      // deuxième case
+};
+
+
+swapResult moveByCoordinates(mat & grid, unsigned ligne, unsigned colonne, char direction)
+{
+    swapResult res{false, {0,0}, {0,0}};
+
+    maPosition p1{ligne, colonne};
+    maPosition p2 = p1;
+
+    switch(direction) {
+    case 'Z': case 'z': p2.abs--; break;
+    case 'S': case 's': p2.abs++; break;
+    case 'Q': case 'q': p2.ord--; break;
+    case 'D': case 'd': p2.ord++; break;
+    default:
+        return res;
+    }
+
+    // Vérification limites
+    if (p2.abs >= grid.size() || p2.ord >= grid[0].size())
+        return res;
+
+    // Vérifier si mouvement valide (Candy Crush)
+    if (!moveIsValid(grid, p1, direction))
+        return res;
+
+    // Mouvement validé
+    res.ok = true;
+    res.p1 = p1;
+    res.p2 = p2;
+
+    return res;
+}
+
+
+swapResult moveByCursor(mat & grid)
+{
+    maPosition cursor{0, 0};
+    char input;
+
+    while (true) {
+        displayGrid(grid);
+        cout << "Curseur : (" << cursor.abs << "," << cursor.ord << ")\n";
+        cout << "ZQSD déplacer, E valider : ";
+        cin >> input;
+
+        if (input == 'E' || input == 'e')
+            break;
+
+        switch(input) {
+        case 'Z': if (cursor.abs > 0) cursor.abs--; break;
+        case 'S': if (cursor.abs + 1 < grid.size()) cursor.abs++; break;
+        case 'Q': if (cursor.ord > 0) cursor.ord--; break;
+        case 'D': if (cursor.ord + 1 < grid[0].size()) cursor.ord++; break;
+        }
+    }
+
+    cout << "Direction échange (ZQSD) : ";
+    char dir;
+    cin >> dir;
+
+    return moveByCoordinates(grid, cursor.abs, cursor.ord, dir);
+}
+
+
+//-------------- Fonction jouer --------------//
 void jouer()
 {
     const size_t taille = 8; // taille de la grille
@@ -272,41 +332,51 @@ void jouer()
 
     char quitter = 'N';
 
-    while(quitter != 'O' && quitter != 'o') {
+    while (quitter != 'O' && quitter != 'o') {
         displayGrid(grid);
 
-        cout << "Choisissez une ligne à déplacer : ";
-        unsigned ligne, colonne;
-        cin >> ligne;
+        cout << "Mode de jeu ?" <<endl;
+        cout << "1 - Coordonnees" <<endl;
+        cout << "2 - Curseur" <<endl;
+        cout << "Choix : ";
 
-        cout << "Choisissez une colonne à déplacer : ";
-        cin >> colonne;
+        int mode;
+        cin >> mode;
 
-        // Vérification des limites
-        if(ligne >= grid.size() || colonne >= grid[0].size()) {
-            cout << "Case invalide! " << endl;
-            continue;
+        swapResult res;
+
+        if (mode == 1) {
+            unsigned l, c;
+            char dir;
+
+            cout << "Ligne : ";
+            cin >> l;
+            cout << "Colonne : ";
+            cin >> c;
+            cout << "Direction (ZQSD) : ";
+            cin >> dir;
+
+            res = moveByCoordinates(grid, l, c, dir);
+        }
+        else if (mode == 2) {   //Pour deplacement par "curseur"
+            res = moveByCursor(grid);
+        }
+        else { // Si l'utilisateur rentre un mauvais mode, on stop
+            cout << "Gros Boulet"<<endl;
+            break;
         }
 
-        cout << "Choisissez la direction (Z = Haut, S = Bas, Q = Gauche, D = Droite) : " <<endl;
-        char dir;
-        cin >> dir;
-
-        maPosition pos{ligne, colonne};
-
-        if (moveIsValid(grid, pos, dir)) {
+        if (res.ok) { //Mouvement correcte
             removeColRow(grid);
-        } else {
-            cout << "Mouvement interdit : aucun alignement possible !" << endl;
-            cin.ignore(10000, '\n');
-            cin.get(); // pause pour lire le message
+            displayGrid(grid);
+            cout << "Echange entre ("
+                 << res.p1.abs << "," << res.p1.ord << ") et ("
+                 << res.p2.abs << "," << res.p2.ord << ")" <<endl;
+        } else { //Mouvement incorrecte
+            cout << "Mouvement impossible !" <<endl;
         }
 
-
-        // Affiche grille après tour
-        displayGrid(grid);
-
-        cout << "Voulez-vous quitter/ abandonner ? (O/N) : ";
+        cout << "Quitter ? (O/N) : ";
         cin >> quitter;
     }
 
