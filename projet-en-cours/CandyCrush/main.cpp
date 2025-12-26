@@ -1,5 +1,5 @@
 /**
- *  @date : 25 décembre 2025
+ *  @date : 26 décembre 2025
  *  @author : Audren Metery-Drouin
  *  @Brief : Script main pour temporairement tester les librairies custom
 **/
@@ -24,6 +24,9 @@ void TestGridAffichage() {
     mat Tableau;
     EtatMat TableauEtat;
 
+    size_t score = 0;
+    size_t scoreParBonbon = 50; // Le score ajouté par bonbon lorsque on détruit une ligne ou colonne
+
     initGrid(Tableau, Taille);
     initEtatGrid(TableauEtat, Taille);
 
@@ -36,21 +39,21 @@ void TestGridAffichage() {
 
         // On choisis l'ordonnée
         StatusDuJeu = ORD;
-        displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details);
+        displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score);
         cout << "choisis ord" << endl;
         cin >> tmp;
         PositionActuelle.ord = stoi(tmp)-1;
 
         // On choisis l'abscisse
         StatusDuJeu = ABS;
-        displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details);
+        displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score);
         cout << "choisis abs" << endl;
         cin >> tmp;
         PositionActuelle.abs = stoi(tmp)-1;
 
         //------ On choisis la direction
         StatusDuJeu = MOUVEMENT;
-        displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details);
+        displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score);
         cout << "choisis direction" << endl;
         char mouvementChoisis;
         cin >> mouvementChoisis;
@@ -107,30 +110,38 @@ void TestGridAffichage() {
             if (howManyColumn >= howManyRow) {
                 // On élimine la colonne
                 removalInColumn(Tableau, TableauEtat, PositionActuelle, howManyColumn);
+                // On ajoute au score
+                score = score + scoreParBonbon*howManyColumn;
             } else {
                 // On élimine la ligne
                 removalInRow(Tableau, TableauEtat, PositionActuelle, howManyRow);
+                // On ajoute au score
+                score = score + scoreParBonbon*howManyRow;
             }
         } else if (columnFound) {
             // On élimine la colonne
             removalInColumn(Tableau, TableauEtat, PositionActuelle, howManyColumn);
+            // On ajoute au score
+            score = score + scoreParBonbon*howManyColumn;
         } else if (rowFound) {
             // On élimine la ligne
             removalInRow(Tableau, TableauEtat, PositionActuelle, howManyRow);
+            // On ajoute au score
+            score = score + scoreParBonbon*howManyRow;
         }
 
         // Animation (Position 1)
         if (columnFound || rowFound) {
             // Old table
-            displayGrid(AncienTableau, AncienTableauEtat, StatusDuJeu, PositionActuelle, Details);
+            displayGrid(AncienTableau, AncienTableauEtat, StatusDuJeu, PositionActuelle, Details, score);
             this_thread::sleep_for(chrono::milliseconds(500));
             for (unsigned i=0; i<2; i++) {
                 // New table
-                displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details);
+                displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score);
                 // Cooldown
                 this_thread::sleep_for(chrono::milliseconds(500));
                 // Old table
-                displayGrid(AncienTableau, AncienTableauEtat, StatusDuJeu, PositionActuelle, Details);
+                displayGrid(AncienTableau, AncienTableauEtat, StatusDuJeu, PositionActuelle, Details, score);
                 // Cooldown
                 this_thread::sleep_for(chrono::milliseconds(500));
             }
@@ -146,37 +157,45 @@ void TestGridAffichage() {
             if (howManyColumn >= howManyRow) {
                 // On élimine la colonne
                 removalInColumn(Tableau, TableauEtat, AutrePosition, howManyColumn);
+                // On ajoute au score
+                score = score + scoreParBonbon*howManyColumn;
             } else {
                 // On élimine la ligne
                 removalInRow(Tableau, TableauEtat, AutrePosition, howManyRow);
+                // On ajoute au score
+                score = score + scoreParBonbon*howManyRow;
             }
         } else if (columnFound) {
             // On élimine la colonne
             removalInColumn(Tableau, TableauEtat, AutrePosition, howManyColumn);
+            // On ajoute au score
+            score = score + scoreParBonbon*howManyColumn;
         } else if (rowFound) {
             // On élimine la ligne
             removalInRow(Tableau, TableauEtat, AutrePosition, howManyRow);
+            // On ajoute au score
+            score = score + scoreParBonbon*howManyRow;
         }
 
         // Animation (Position 2)
         if (columnFound || rowFound) {
             // Old table
-            displayGrid(AncienTableau, AncienTableauEtat, StatusDuJeu, PositionActuelle, Details);
+            displayGrid(AncienTableau, AncienTableauEtat, StatusDuJeu, PositionActuelle, Details, score);
             this_thread::sleep_for(chrono::milliseconds(500));
             for (unsigned i=0; i<2; i++) {
                 // New table
-                displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details);
+                displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score);
                 // Cooldown
                 this_thread::sleep_for(chrono::milliseconds(500));
                 // Old table
-                displayGrid(AncienTableau, AncienTableauEtat, StatusDuJeu, PositionActuelle, Details);
+                displayGrid(AncienTableau, AncienTableauEtat, StatusDuJeu, PositionActuelle, Details, score);
                 // Cooldown
                 this_thread::sleep_for(chrono::milliseconds(500));
             }
         }
 
         // Display New table
-        displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details);
+        displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score);
 
         //-------------------------- On applique la gravité
         bool change = true;
@@ -184,7 +203,7 @@ void TestGridAffichage() {
             change = graviter(Tableau, TableauEtat, GravDirection);
             if (change) {
                 this_thread::sleep_for(chrono::milliseconds(500));
-                displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details);
+                displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score);
             }
         }
 
