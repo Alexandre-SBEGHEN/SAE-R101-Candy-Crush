@@ -1,5 +1,5 @@
 /**
- *  @date : 24 décembre 2025
+ *  @date : 26 décembre 2025
  *  @author : Audren Metery-Drouin
  *  @Brief : Les fonctions utilisées pour afficher la grille
 **/
@@ -59,7 +59,7 @@ void clearScreen () {
     cout << "\033[H\033[2J";
 }
 
-void displayGrid(mat Tableau, EtatMat TableauEtat, enum StatusGame Status, maPosition CurrentPos, enum graphisme Details) {
+void displayGrid(mat Tableau, EtatMat TableauEtat, enum StatusGame Status, maPosition CurrentPos, enum graphisme Details, size_t score) {
 
     // On efface l'écran
     clearScreen();
@@ -136,6 +136,16 @@ void displayGrid(mat Tableau, EtatMat TableauEtat, enum StatusGame Status, maPos
             couleur(KReset);
             cout << '|';
         }
+        // Display score
+        string scoreTxt = to_string(score);
+        if (ord == 0) {
+            cout << " /" << string(scoreTxt.size()+9, '-') << '\\';
+        } else if (ord == 2) {
+            cout << " \\" << string(scoreTxt.size()+9, '-') << '/';
+        } else if (ord == 1) {
+            cout << " | Score: " << scoreTxt << " |";
+        }
+
         cout << endl;
     }
 }
