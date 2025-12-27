@@ -1,5 +1,5 @@
 /**
- *  @date : 26 décembre 2025
+ *  @date : 27 décembre 2025
  *  @author : Audren Metery-Drouin
  *  @Brief : Script main pour temporairement tester les librairies custom
 **/
@@ -15,7 +15,7 @@
 using namespace std;
 
 StatusGame StatusDuJeu = IDLE;
-graphisme Details = LOW;
+graphisme Details = HIGH;
 maPosition PositionActuelle;
 gravType GravDirection = UP;
 

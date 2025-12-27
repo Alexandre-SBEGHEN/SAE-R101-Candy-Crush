@@ -1,5 +1,5 @@
 /**
- *  @date : 26 décembre 2025
+ *  @date : 27 décembre 2025
  *  @author : Audren Metery-Drouin
  *  @Brief : Les fonctions utilisées pour afficher la grille
 **/
@@ -121,12 +121,20 @@ void displayGrid(mat Tableau, EtatMat TableauEtat, enum StatusGame Status, maPos
             // Write cell candy number
             if (Tableau[ord][abs] != KImpossible) {
                 if (Details == LOW)
+                    // Low Graphisms, candy displayed as numbers
                     cout << setw(2) << Tableau[ord][abs] << ' ';
                 else if (Details == HIGH) {
-                    if ((rand()%2)+1 == 1)
-                        cout << setw(2) << " 🍬";
-                    else
-                        cout << setw(2) << " 🍫";
+                    // High Graphisms, candy displayed as emojis
+                    int r = (Tableau[ord][abs]%9)+1;
+                    if (r==1) {cout << " 🍬";}
+                    else if (r==2) {cout << " 🍭";}
+                    else if (r==3) {cout << " 🍫";}
+                    else if (r==4) {cout << " 🧁";}
+                    else if (r==5) {cout << " 🍰";}
+                    else if (r==6) {cout << " 🍦";}
+                    else if (r==7) {cout << " 🍨";}
+                    else if (r==8) {cout << " 🍧";}
+                    else if (r==9) {cout << " 🍢";}
                 }
             } else {
                 // Case vide
