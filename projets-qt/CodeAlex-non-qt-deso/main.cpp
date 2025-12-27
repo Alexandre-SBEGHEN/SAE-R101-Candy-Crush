@@ -1,6 +1,6 @@
 /**
  * @file main.cpp
- * @brief Script de gestion de flux d'entrée et de sortie
+ * @brief Script principal du jeu
  * @author Alexandre SBEGHEN
  * @date 24/12/2025
  * @version 1.0
