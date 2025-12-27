@@ -56,6 +56,9 @@ void highscores_saveto(const highsc_table & table, const string & filename) {
 void highscores_loadto(const string & filename, highsc_table & table) {
     ifstream file(filename);
 
+    //Effacer la table
+    table.clear();
+    
     //Récupérer les couples nom/score et les assiner à `table`
     while (!file.eof()) {
         string line = file_readline(file);

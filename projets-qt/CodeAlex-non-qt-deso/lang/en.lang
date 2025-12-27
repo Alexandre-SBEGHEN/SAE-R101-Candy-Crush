@@ -1,8 +1,27 @@
 /////ENGLISH TRANSLATION
 English
-//Title screen
-titlescreen__main__play         Play
-titlescreen__main__highscores   High Scores
-titlescreen__main__settings     Settings
-titlescreen__main__about        About
-titlescreen__main__quit         Quit
+
+////Main menu
+menu__misc__back                Back
+menu__misc__current             Current
+
+menu__main__play                Play
+menu__main__highscores          High Scores
+menu__main__settings            Settings
+menu__main__about               About
+menu__main__quit                Quit
+
+menu__highscores__save          Save table
+menu__highscores__savename      Enter the filename to save the table into
+menu__highscores__load          Load a table
+menu__highscores__loadname      Enter the filename to load the table from
+
+menu__param__language           Language
+menu__param__movingway          Moving way
+
+menu__param__language__french   French
+menu__param__language__english  English
+menu__param__language__custom   Custom
+
+menu__param__movingway__inst    Instantaneous -> coordinates
+menu__param__movingway__cbc     Cell by cell -> sequence of keys

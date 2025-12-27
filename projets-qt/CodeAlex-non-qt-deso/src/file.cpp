@@ -35,3 +35,9 @@ string file_line_to_val(const string & line) {
     while (line[substr_index] != ' ' || line[substr_index - 1] != ' ') --substr_index; //Vérifier 2 espaces pour que la valeur puisse elle même en contenir (ex: 'hello  bon jour' -> 'bon jour')
     return line.substr(substr_index, line.length() - substr_index);
 }
+
+/* Corps du précidat `file_exists` qui vérifie l'existence ou non d'un fichier (dossier inclus) */
+bool file_exists(const string & filename) {
+    ifstream file(filename);
+    return file.good();
+}

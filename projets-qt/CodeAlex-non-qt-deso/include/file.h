@@ -35,4 +35,13 @@ string file_line_to_key(const string & line);
  */
 string file_line_to_val(const string & line);
 
+/**
+ * @brief Vérifie si un fichier existe ou non.
+ * 
+ * Important : sur Linux, les dossiers sont eux-mêmes des fichiers, donc mettre le chemin vers un dossier existant renverra `vrai`
+ * 
+ * @param filename Le chemin (relatif ou absolu) du fichier à vérifier
+ */
+bool file_exists(const string & filename);
+
 #endif

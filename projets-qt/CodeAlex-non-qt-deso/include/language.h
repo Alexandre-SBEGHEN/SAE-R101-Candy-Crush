@@ -3,7 +3,7 @@
  * @brief Fichier header de traductions des textes
  * @author Alexandre SBEGHEN
  * @date 24/12/2025
- * @version 1.2
+ * @version 1.3
  */
 #ifndef LANGUAGE_H
 #define LANGUAGE_H
@@ -16,11 +16,11 @@ using namespace std;
 using gametexts = map<string, string>;
 
 /**
- * @brief Prend un entrée le nom d'un fichier .lang, et renvoie la map de tous les textes du jeu dans la langue en question, sous forme de map.
+ * @brief Charge les textes issus d'un fichier dans une map `gametexts`.
  * 
  * @param filename Le nom du fichier sous forme de `string`.
- * @return La map des textes du jeu.
+ * @param texts La map vers laquelle les données sont enregistrées.
  */
-gametexts language_get_text_map_from_file(const string & filename);
+void language_get_texts_from_file_to(const string & filename, gametexts & texts);
 
  #endif
