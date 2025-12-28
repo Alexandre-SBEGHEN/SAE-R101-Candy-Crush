@@ -33,6 +33,7 @@ string file_line_to_key(const string & line) {
 string file_line_to_val(const string & line) {
     size_t substr_index = line.length() - 1;
     while (line[substr_index] != ' ' || line[substr_index - 1] != ' ') --substr_index; //Vérifier 2 espaces pour que la valeur puisse elle même en contenir (ex: 'hello  bon jour' -> 'bon jour')
+    ++substr_index;
     return line.substr(substr_index, line.length() - substr_index);
 }
 

@@ -3,7 +3,7 @@
  * @brief Script de traductions des textes
  * @author Alexandre SBEGHEN
  * @date 24/12/2025
- * @version 1.4
+ * @version 1.5
  */
 #include <iostream>
 #include <map>
@@ -20,7 +20,7 @@ void language_get_texts_from_file_to(const string & filename, gametexts & texts)
     const string FILE_LANG = file_readline(file);
     
     //Effacer `texts`
-    texts.clear();
+    //texts.clear();
     
     //Récupérer les couples clé/valeur et les assiner à 'texts'
     while (!file.eof()) {
