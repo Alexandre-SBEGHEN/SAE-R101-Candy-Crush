@@ -20,7 +20,8 @@ using gametexts = map<string, string>;
  * 
  * @param filename Le nom du fichier sous forme de `string`.
  * @param texts La map vers laquelle les données sont enregistrées.
+ * @return Si le fichier a bien été chargé
  */
-void language_get_texts_from_file_to(const string & filename, gametexts & texts);
+bool language_get_texts_from_file_to(const string & filename, gametexts & texts);
 
  #endif

@@ -13,7 +13,8 @@
 #include "include/highscores.h"
 #include "include/option.h"
 using namespace std;
-
+//"\033[41m"
+#define underline_txt(text) "\033[4m" + text + "\033[0m"
 gametexts languageTexts;
 highsc_table highScores;
 execoption startOptions = {
@@ -42,6 +43,7 @@ enum GameMenuButtonAction {
 
     ACTION_PARAM_LANG_FR,
     ACTION_PARAM_LANG_EN,
+    ACTION_PARAM_LANG_CUSTOM,
 
     ACTION_PARAM_MOV_ABS,
     ACTION_PARAM_MOV_REL,
@@ -75,9 +77,13 @@ int main(int argc, char** arg) {
 
     //Charger une potentielle table de highscore
     if (startOptions["-highsc"] != "none") {
-        if (file_exists(startOptions["-highsc"]))
+        if (file_exists(startOptions["-highsc"])) {
             highscores_loadto(startOptions["-highsc"], highScores);
-        else cout << "Warning, highscore file doesn't exist or not found -- creating an empty table." << endl;
+        } else {
+            cout << "Warning, highscore file doesn't exist or not found -- creating an empty table." << endl;
+            cout << "Press 'Enter' key to continue...";
+            cin.get();
+        }
     }
 
     //Activer ou non le mode graphismes élevés
@@ -112,6 +118,7 @@ int main(int argc, char** arg) {
     //Options->Langue
     GameMenu->children[2]->children[0]->children.push_back(GameMenuButton_create(&languageTexts["menu__param__language__french"], ACTION_PARAM_LANG_FR, GameMenu->children[2]->children[0]));
     GameMenu->children[2]->children[0]->children.push_back(GameMenuButton_create(&languageTexts["menu__param__language__english"], ACTION_PARAM_LANG_EN, GameMenu->children[2]->children[0]));
+    GameMenu->children[2]->children[0]->children.push_back(GameMenuButton_create(&languageTexts["menu__param__language__custom"], ACTION_PARAM_LANG_CUSTOM, GameMenu->children[2]->children[0]));
     GameMenu->children[2]->children[0]->children.push_back(GameMenuButton_create(&languageTexts["menu__misc__back"], BACKWARD, GameMenu->children[2]->children[0]));
     
     //Options->Movingway
@@ -131,15 +138,15 @@ int main(int argc, char** arg) {
 
         //Afficher le titre du jeu
         cout << R"(
- _____                 _         _____                _     
-/  __ \               | |       /  __ \              | |    
-| /  \/ __ _ _ __   __| |_   _  | /  \/_ __ _   _ ___| |__  
-| |    / _` | '_ \ / _` | | | | | |   | '__| | | / __| '_ \ 
-| \__/\ (_| | | | | (_| | |_| | | \__/\ |  | |_| \__ \ | | |
- \____/\__,_|_| |_|\__,_|\__, |  \____/_|   \__,_|___/_| |_|
-                          __/ |                             
-                         |___/                              
-        )" << endl;
+  _____                _          _____                _
+ / ____|              | |        / ____|              | |
+| |     __ _ _ __   __| |_   _  | |     _ __ _   _ ___| |__     ___ _ __  _ __
+| |    / _` | '_ \ / _` | | | | | |    | '__| | | / __| '_ \   / __| '_ \| '_ \
+| |___| (_| | | | | (_| | |_| | | |____| |  | |_| \__ \ | | | | (__| |_) | |_) |
+ \_____\__,_|_| |_|\__,_|\__, |  \_____|_|   \__,_|___/_| |_|  \___| .__/| .__/
+                          __/ |                                    | |   | |
+                         |___/                                     |_|   |_|
+)" << endl;
 
         //Afficher le à propos
         if (*(GameMenuCurrent->name) == languageTexts["menu__main__about"]) {
@@ -147,20 +154,22 @@ int main(int argc, char** arg) {
             cout << languageTexts["menu__about__title"] << endl;
             cout << "==============================" << endl;
 
-            cout << endl << languageTexts["menu__about__name"] << " Candy Crush C++" << endl;
-            cout << languageTexts["menu__about__version"] << " 1.0.0" << endl;
+            cout << endl << underline_txt(languageTexts["menu__about__name"]) << " Candy Crush C++" << endl;
+            cout << underline_txt(languageTexts["menu__about__version"]) << " 1.0.0" << endl;
 
-            cout << endl << languageTexts["menu__about__authors"] << endl;
+            cout << endl << underline_txt(languageTexts["menu__about__authors"]) << endl;
             cout << "- METERY DROUIN Audren" << endl;
             cout << "- MOYENIN Nicolas" << endl;
             cout << "- SBEGHEN Alexandre" << endl;
 
-            cout << endl << languageTexts["menu__about__desc"] << endl;
+            cout << endl << underline_txt(languageTexts["menu__about__desc"]) << endl;
             cout << languageTexts["menu__about__descline"] << endl;
 
-            cout << endl << languageTexts["menu__about__legal"] << endl;
+            cout << endl << underline_txt(languageTexts["menu__about__legal"]) << endl;
             cout << languageTexts["menu__about__legaldesc_l1"] << endl;
             cout << languageTexts["menu__about__legaldesc_l2"] << endl;
+            cout << languageTexts["menu__about__legaldesc_l3"] << endl;
+            cout << languageTexts["menu__about__legaldesc_l4"] << endl;
 
             cout << "==============================" << endl << endl;
         }
@@ -232,15 +241,48 @@ int main(int argc, char** arg) {
                 string filename;
                 cin >> filename;
 
-                bool isloaded = highscores_loadto(filename + ".hs", highScores);
-                
-                cout << ((isloaded) ? languageTexts["menu__highscores__loaded"] : languageTexts["menu__highscores__loaderr"]);
+                bool isloaded = highscores_loadto(filename, highScores);
+                cout << ((isloaded) ? languageTexts["menu__highscores__loaded"] : languageTexts["menu__misc__filenotfound"]);
 
 
                 cout << ' ' << languageTexts["menu__misc__pressenter"];
                 cin.ignore();
                 cin.get();
 
+                break;
+            }
+
+            //Mettre la langue en français
+            case ACTION_PARAM_LANG_FR:
+                language_get_texts_from_file_to("lang/fr.lang", languageTexts);
+
+                cout << languageTexts["menu__param__language__loaded"] << ' ' << languageTexts["menu__misc__pressenter"];
+                cin.ignore();
+                cin.get();
+                break;
+            
+            //Mettre la langue en anglais
+            case ACTION_PARAM_LANG_EN:
+                language_get_texts_from_file_to("lang/en.lang", languageTexts);
+
+                cout << languageTexts["menu__param__language__changed"] << ' ' << languageTexts["menu__misc__pressenter"];
+                cin.ignore();
+                cin.get();
+                break;
+            
+            //Mettre la langue en personnalisé
+            case ACTION_PARAM_LANG_CUSTOM: {
+                cout << languageTexts["menu__param__language__loadname"] << ' ' << endl;
+                string filename;
+                cin >> filename;
+
+                bool isloaded = language_get_texts_from_file_to(filename, languageTexts);
+
+                cout << ((isloaded) ? languageTexts["menu__param__language__loaded"] : languageTexts["menu__misc__filenotfound"]);
+
+                cout << ' ' << languageTexts["menu__misc__pressenter"];
+                cin.ignore();
+                cin.get();
                 break;
             }
         }

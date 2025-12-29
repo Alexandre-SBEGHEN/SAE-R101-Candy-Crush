@@ -1,27 +1,44 @@
-/////FRENCH TRANSLATION
 Français
+menu__misc__back                    Retour
+menu__misc__current                 Actuel
+menu__misc__choosebutton            Sélectionnez un bouton :
+menu__misc__pressenter              Appuyez sur la touche « Entrée » pour continuer...
+menu__misc__filenotfound            Oups... Une erreur est survenue. Impossible de charger le fichier.
 
-////Main menu
-menu__misc__back                Back
-menu__misc__current             Current
+menu__main__play                    Jouer
+menu__main__highscores              Meilleurs scores
+menu__main__settings                Paramètres
+menu__main__about                   À propos
+menu__main__quit                    Quitter
 
-menu__main__play                Jouer
-menu__main__highscores          Table des meilleurs scores
-menu__main__settings            Paramètres
-menu__main__about               A propos
-menu__main__quit                Quitter
+menu__highscores__show              Afficher le tableau
+menu__highscores__save              Enregistrer le tableau
+menu__highscores__savename          Entrez le nom du fichier dans lequel enregistrer le tableau (avec extension):
+menu__highscores__saved             Enregistré !
+menu__highscores__load              Charger un tableau
+menu__highscores__loadname          Entrez le nom du fichier depuis lequel charger le tableau (avec extension):
+menu__highscores__loaded            Chargé !
 
-menu__highscores__save          Save table
-menu__highscores__savename      Enter the filename to save the table into
-menu__highscores__load          Load a table
-menu__highscores__loadname      Enter the filename to load the table from
+menu__param__language               Langue
+menu__param__movingway              Mode de déplacement
 
-menu__param__language           Language
-menu__param__movingway          Moving way
+menu__param__language__french       Français
+menu__param__language__english      Anglais
+menu__param__language__custom       Personnalisé
+menu__param__language__loadname     Entrez le nom du fichier de langue (avec extension)
+menu__param__language__loaded       Langue modifiée !
 
-menu__param__language__french   French
-menu__param__language__english  English
-menu__param__language__custom   Custom
+menu__param__movingway__abs         Instantané -> coordonnées
+menu__param__movingway__rel         Case par case -> séquence de touches
 
-menu__param__movingway__inst    Instantaneous -> coordinates
-menu__param__movingway__cbc     Cell by cell -> sequence of keys
+menu__about__title                  |-------À PROPOS DU JEU-------|
+menu__about__name                   Nom:
+menu__about__version                Version:
+menu__about__authors                Auteurs:
+menu__about__desc                   Description:
+menu__about__descline               Un jeu de type Candy Crush développé en C++, jouable dans un terminal Unix.
+menu__about__legal                  Mentions légales:
+menu__about__legaldesc_l1           Projet réalisé dans le cadre du BUT Informatique, année 2025-2026.
+menu__about__legaldesc_l2           Il est inspiré d’une œuvre existante.
+menu__about__legaldesc_l3           Le logo ASCII a été créé à l’aide du générateur disponible sur ascii.co.uk/text, en utilisant la police « Big ».
+menu__about__legaldesc_l4           À la demande des ayants droit, le contenu pourra être modifié ou supprimé.
