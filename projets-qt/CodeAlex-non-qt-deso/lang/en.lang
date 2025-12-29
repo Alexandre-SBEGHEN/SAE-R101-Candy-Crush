@@ -4,6 +4,8 @@ English
 ////Main menu
 menu__misc__back                Back
 menu__misc__current             Current
+menu__misc__choosebutton        Please select a button:
+menu__misc__pressenter          Press 'Enter' key to continue...
 
 menu__main__play                Play
 menu__main__highscores          High Scores
@@ -11,10 +13,14 @@ menu__main__settings            Settings
 menu__main__about               About
 menu__main__quit                Quit
 
+menu__highscores__show          Show table
 menu__highscores__save          Save table
-menu__highscores__savename      Enter the filename to save the table into
+menu__highscores__savename      Enter the filename to save the table into (w/o ext):
+menu__highscores__saved         Saved!
 menu__highscores__load          Load a table
-menu__highscores__loadname      Enter the filename to load the table from
+menu__highscores__loadname      Enter the filename to load the table from (w/o ext):
+menu__highscores__loaded        Loaded!
+menu__highscores__loaderr       Oops... An error as occured. Couldn't load the file.
 
 menu__param__language           Language
 menu__param__movingway          Moving way
@@ -23,5 +29,15 @@ menu__param__language__french   French
 menu__param__language__english  English
 menu__param__language__custom   Custom
 
-menu__param__movingway__inst    Instantaneous -> coordinates
-menu__param__movingway__cbc     Cell by cell -> sequence of keys
+menu__param__movingway__abs     Instantaneous -> coordinates
+menu__param__movingway__rel     Cell by cell -> sequence of keys
+
+menu__about__title              |-------ABOUT THE GAME-------|
+menu__about__name               Name:
+menu__about__version            Version:
+menu__about__authors            Authors:
+menu__about__desc               Description:
+menu__about__descline           A Candy Crush like developped in C++, playable in unix terminal.
+menu__about__legal              Legal notices:
+menu__about__legaldesc_l1       Project completed as part of the Computer Science degree program, year 2025-2026. It is inspired by an existing work.
+menu__about__legaldesc_l2       Upon request by the rights holders, the content will be modified or removed.

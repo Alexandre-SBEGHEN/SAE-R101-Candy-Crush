@@ -3,9 +3,10 @@
  * @brief Script pour le fonctionnement de la table des high scores
  * @author Alexandre SBEGHEN
  * @date 26/12/2025
- * @version 1.1
+ * @version 1.2
  */
 #include <iostream>
+#include <algorithm>
 #include <vector>
 #include <map>
 #include <fstream>
@@ -53,7 +54,9 @@ void highscores_saveto(const highsc_table & table, const string & filename) {
 }
 
 /* Corps de la procédure `highscores_loadto` qui charge une table de high scores depuis un fichier */
-void highscores_loadto(const string & filename, highsc_table & table) {
+bool highscores_loadto(const string & filename, highsc_table & table) {
+    if (!file_exists(filename)) return false;
+
     ifstream file(filename);
 
     //Effacer la table
@@ -71,4 +74,6 @@ void highscores_loadto(const string & filename, highsc_table & table) {
 
     //Fermer le fichier
     file.close();
+
+    return true;
 }

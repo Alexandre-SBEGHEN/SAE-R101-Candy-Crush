@@ -3,7 +3,7 @@
  * @brief Fichier header pour le fonctionnement de la table des high scores
  * @author Alexandre SBEGHEN
  * @date 26/12/2025
- * @version 1.0
+ * @version 1.1
  */
 #ifndef HIGHSCORES_H
 #define HIGHSCORES_H
@@ -63,7 +63,8 @@ void highscores_saveto(const highsc_table & table, const string & filename);
  * 
  * @param filename Le nom du fichier depuis lequel les données seront chargées.
  * @param table La table vers laquelle les scores seront transférés.
+ * @return Si le fichier a bien été chargé
  */
-void highscores_loadto(const string & filename, highsc_table & table);
+bool highscores_loadto(const string & filename, highsc_table & table);
 
 #endif
