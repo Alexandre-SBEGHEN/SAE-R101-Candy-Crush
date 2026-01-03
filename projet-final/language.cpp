@@ -1,0 +1,40 @@
+/**
+ * @file language.cpp
+ * @brief Script de traductions des textes
+ * @author Alexandre SBEGHEN
+ * @date 24/12/2025
+ * @version 1.6
+ */
+#include <iostream>
+#include <map>
+#include <fstream>
+#include <language.h>
+#include <file.h>
+using namespace std;
+
+/* Corps de la prédicat `language_get_texts_from_file_to` qui crée la map de tous les textes du jeu à partir d'un fichier */
+bool language_get_texts_from_file_to(const string & filename, gametexts & texts) {
+    if (!file_exists(filename)) return false;
+
+    ifstream file(filename);
+
+    //Récupérer le nom de langue
+    const string FILE_LANG = file_readline(file);
+    
+    //Effacer `texts`
+    //texts.clear();
+    
+    //Récupérer les couples clé/valeur et les assiner à 'texts'
+    while (!file.eof()) {
+        string line = file_readline(file);
+        if (line.length() == 0) break;
+        string key = file_line_to_key(line);
+        string val = file_line_to_val(line);
+        texts[key] = val;
+    }
+
+    //Fermer le fichier
+    file.close();
+
+    return true;
+}
