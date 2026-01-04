@@ -31,8 +31,11 @@ swapResult moveByCoordinates(mat & grid, unsigned ligne, unsigned colonne, char 
  * @brief Se déplacer selon la méthode 2
  *
  * @param grid La grille du jeu
+ * @param EtatGrid La matrice des états de la grille du jeu
+ * @param details Le niveau de graphisme
+ * @param score Le score actuel du joueur
  */
-swapResult moveByCursor(mat & grid);
+swapResult moveByCursor(mat & grid, EtatMat EtatGrid, graphisme details, size_t score, int coupsRestant);
 
 /**
  * @brief Vérifie si un mouvement est valide.

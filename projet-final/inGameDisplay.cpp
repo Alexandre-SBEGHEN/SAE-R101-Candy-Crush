@@ -59,7 +59,7 @@ void clearScreen () {
     cout << "\033[H\033[2J";
 }
 
-void displayGrid(mat Tableau, EtatMat TableauEtat, enum StatusGame Status, maPosition CurrentPos, enum graphisme Details, size_t score) {
+void displayGrid(mat Tableau, EtatMat TableauEtat, enum StatusGame Status, maPosition CurrentPos, enum graphisme Details, size_t score, int coupsRestant) {
 
     // On efface l'écran
     clearScreen();
@@ -145,13 +145,28 @@ void displayGrid(mat Tableau, EtatMat TableauEtat, enum StatusGame Status, maPos
             cout << '|';
         }
         // Display score
-        string scoreTxt = to_string(score);
+        string scoreTxt = "Score: " + to_string(score);
+        string coupsRestantTxt = "Coups restant: " + to_string(coupsRestant);
+
+        size_t maxSize = scoreTxt.size();
+        if (coupsRestantTxt.size()>maxSize) maxSize=coupsRestantTxt.size();
+
         if (ord == 0) {
-            cout << " /" << string(scoreTxt.size()+9, '-') << '\\';
-        } else if (ord == 2) {
-            cout << " \\" << string(scoreTxt.size()+9, '-') << '/';
+            cout << " /" << string(maxSize+2, '-') << '\\';
+        } else if (ord == 3) {
+            cout << " \\" << string(maxSize+2, '-') << '/';
         } else if (ord == 1) {
-            cout << " | Score: " << scoreTxt << " |";
+            cout << " | " << scoreTxt;
+            if (scoreTxt.size()<maxSize) {
+                cout << string(maxSize-scoreTxt.size(), ' ');
+            }
+            cout << " |";
+        } else if (ord == 2) {
+            cout << " | " << coupsRestantTxt;
+            if (coupsRestantTxt.size()<maxSize) {
+                cout << string(maxSize-coupsRestantTxt.size(), ' ');
+            }
+            cout << " |";
         }
 
         cout << endl;

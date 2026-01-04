@@ -36,8 +36,9 @@ void clearScreen ();
  * @param TableauEtat Les états des cases de la grille
  * @param Status Ce que le joueur est actuellement en train de faire
  * @param CurrentPos La position actuelle sélectionner
+ * @param coupsRestant Le nombre de coups restants au joueur
  */
-void displayGrid(mat Tableau, EtatMat TableauEtat, enum StatusGame Status, maPosition CurrentPos, enum graphisme Details, size_t score);
+void displayGrid(mat Tableau, EtatMat TableauEtat, enum StatusGame Status, maPosition CurrentPos, enum graphisme Details, size_t score, int coupsRestant);
 
 //------------------------------ Fonctions d'initialisation des grilles
 /**

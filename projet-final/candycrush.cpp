@@ -1,5 +1,5 @@
 /**
- *  @date : 27 décembre 2025
+ *  @date : 4 janvier 2026
  *  @author : Audren Metery-Drouin
  *  @Brief : Script du gameplay
 **/
@@ -35,81 +35,89 @@ size_t candycrush_play(const gametexts & texts, const size_t & movingway, const 
     size_t score = 0;
     size_t scoreParBonbon = 50; // Le score ajouté par bonbon lorsque on détruit une ligne ou colonne
 
+    int coupsRestant = 10; // Le nombre de coups restants
+
     initGrid(Tableau, Taille);
     initEtatGrid(TableauEtat, Taille);
 
-    PositionActuelle.abs = 0;
-    PositionActuelle.ord = 0;
+    while (coupsRestant > 0) {
 
-    displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score);
+        // Position impossible pour une position non choisis
+        PositionActuelle.abs = Taille;
+        PositionActuelle.ord = Taille;
 
-    while (true) {
+        // On affiche la grille
+        StatusDuJeu = IDLE;
+        displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
 
+
+        // Code de Nicolas pour gérer les entrées d'utilisateurs
         swapResult res;
 
-        if (movingway == 0) {
-            unsigned l, c;
+        if (movingway == 1) {
+            unsigned line, column;
             char dir;
 
+            // Ordonnée
+            StatusDuJeu = ORD;
+            displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
+
             cout << "Ligne : ";
-            cin >> l;
+            cin >> line;
+            PositionActuelle.ord = line-1;
+
+            // Abscisse
+            StatusDuJeu = ABS;
+            displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
+
             cout << "Colonne : ";
-            cin >> c;
+            cin >> column;
+            PositionActuelle.abs = column-1;
+
+            // Mouvement
+            StatusDuJeu = MOUVEMENT;
+            displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
+
             cout << "Direction (ZQSD) : ";
             cin >> dir;
 
-            res = moveByCoordinates(Tableau, l, c, dir);
+            res = moveByCoordinates(Tableau, PositionActuelle.abs, PositionActuelle.ord, dir);
         }
         else if (movingway == 1) {   //Pour deplacement par "curseur"
-            res = moveByCursor(Tableau);
+            res = moveByCursor(Tableau, TableauEtat, Details, score, coupsRestant);
         }
         else { // Si l'utilisateur rentre un mauvais mode, on stop
             cout << "Gros Boulet"<<endl;
             break;
         }
+        //
+
+
         
+        //------------ On utilise le résultat pour savoir si la position et le mouvement sont valides
         if (res.ok) {
-            StatusDuJeu = IDLE;
             PositionActuelle = res.p1;
             maPosition AutrePosition = res.p2;
-            
+
+            // DEBUG
             /*
-            //------ On échange les bonbons
-            maPosition AutrePosition;
-            if (mouvementChoisis == 'z') {
-                // Haut
-                unsigned bonbonTmp = Tableau[PositionActuelle.ord][PositionActuelle.abs];
-                Tableau[PositionActuelle.ord][PositionActuelle.abs] = Tableau[PositionActuelle.ord-1][PositionActuelle.abs];
-                Tableau[PositionActuelle.ord-1][PositionActuelle.abs] = bonbonTmp;
-                // Autre position
-                AutrePosition.ord = PositionActuelle.ord-1;
-                AutrePosition.abs = PositionActuelle.abs;
-            } else if (mouvementChoisis == 's') {
-                // Bas
-                unsigned bonbonTmp = Tableau[PositionActuelle.ord][PositionActuelle.abs];
-                Tableau[PositionActuelle.ord][PositionActuelle.abs] = Tableau[PositionActuelle.ord+1][PositionActuelle.abs];
-                Tableau[PositionActuelle.ord+1][PositionActuelle.abs] = bonbonTmp;
-                // Autre position
-                AutrePosition.ord = PositionActuelle.ord+1;
-                AutrePosition.abs = PositionActuelle.abs;
-            } else if (mouvementChoisis == 'q') {
-                // Gauche
-                unsigned bonbonTmp = Tableau[PositionActuelle.ord][PositionActuelle.abs];
-                Tableau[PositionActuelle.ord][PositionActuelle.abs] = Tableau[PositionActuelle.ord][PositionActuelle.abs-1];
-                Tableau[PositionActuelle.ord][PositionActuelle.abs-1] = bonbonTmp;
-                // Autre position
-                AutrePosition.ord = PositionActuelle.ord;
-                AutrePosition.abs = PositionActuelle.abs-1;
-            } else if (mouvementChoisis == 'd') {
-                // Droite
-                unsigned bonbonTmp = Tableau[PositionActuelle.ord][PositionActuelle.abs];
-                Tableau[PositionActuelle.ord][PositionActuelle.abs] = Tableau[PositionActuelle.ord][PositionActuelle.abs+1];
-                Tableau[PositionActuelle.ord][PositionActuelle.abs+1] = bonbonTmp;
-                // Autre position
-                AutrePosition.ord = PositionActuelle.ord;
-                AutrePosition.abs = PositionActuelle.abs+1;
-            }
+            StatusDuJeu = MOUVEMENT;
+            displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
+            cout << "Voici la position 1" << endl;
+            this_thread::sleep_for(chrono::milliseconds(2000));
+
+            displayGrid(Tableau, TableauEtat, StatusDuJeu, AutrePosition, Details, score, coupsRestant);
+            cout << "Voici la position 2" << endl;
+            this_thread::sleep_for(chrono::milliseconds(2000));
+
+            StatusDuJeu = IDLE;
             */
+            //
+
+            //------ On échange les bonbons
+            unsigned bonbonTmp = Tableau[PositionActuelle.ord][PositionActuelle.abs];
+            Tableau[PositionActuelle.ord][PositionActuelle.abs] = Tableau[AutrePosition.ord][AutrePosition.abs];
+            Tableau[AutrePosition.ord][AutrePosition.abs] = bonbonTmp;
 
             //-------------------------- On élimine les chaînes de bonbons et on applique la gravité
             //------ On garde les ancienne versions des tableaux pour pouvoir faire une animation
@@ -148,15 +156,15 @@ size_t candycrush_play(const gametexts & texts, const size_t & movingway, const 
             // Animation (Position 1)
             if (columnFound || rowFound) {
                 // Old table
-                displayGrid(AncienTableau, AncienTableauEtat, StatusDuJeu, PositionActuelle, Details, score);
+                displayGrid(AncienTableau, AncienTableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
                 this_thread::sleep_for(chrono::milliseconds(500));
                 for (unsigned i=0; i<2; i++) {
                     // New table
-                    displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score);
+                    displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
                     // Cooldown
                     this_thread::sleep_for(chrono::milliseconds(500));
                     // Old table
-                    displayGrid(AncienTableau, AncienTableauEtat, StatusDuJeu, PositionActuelle, Details, score);
+                    displayGrid(AncienTableau, AncienTableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
                     // Cooldown
                     this_thread::sleep_for(chrono::milliseconds(500));
                 }
@@ -195,22 +203,22 @@ size_t candycrush_play(const gametexts & texts, const size_t & movingway, const 
             // Animation (Position 2)
             if (columnFound || rowFound) {
                 // Old table
-                displayGrid(AncienTableau, AncienTableauEtat, StatusDuJeu, PositionActuelle, Details, score);
+                displayGrid(AncienTableau, AncienTableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
                 this_thread::sleep_for(chrono::milliseconds(500));
                 for (unsigned i=0; i<2; i++) {
                     // New table
-                    displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score);
+                    displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
                     // Cooldown
                     this_thread::sleep_for(chrono::milliseconds(500));
                     // Old table
-                    displayGrid(AncienTableau, AncienTableauEtat, StatusDuJeu, PositionActuelle, Details, score);
+                    displayGrid(AncienTableau, AncienTableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
                     // Cooldown
                     this_thread::sleep_for(chrono::milliseconds(500));
                 }
             }
 
             // Display New table
-            displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score);
+            displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
 
             //-------------------------- On applique la gravité
             bool change = true;
@@ -218,7 +226,7 @@ size_t candycrush_play(const gametexts & texts, const size_t & movingway, const 
                 change = graviter(Tableau, TableauEtat, GravDirection);
                 if (change) {
                     this_thread::sleep_for(chrono::milliseconds(500));
-                    displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score);
+                    displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
                 }
             }
 
@@ -231,11 +239,22 @@ size_t candycrush_play(const gametexts & texts, const size_t & movingway, const 
         } else {
             cout << "mouvement invalide" << endl;
             this_thread::sleep_for(chrono::milliseconds(3000));
-            displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score); //Display grid
+            displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant); //Display grid
         }
 
-        
+        // On réduit le nomdre de coups restant
+        --coupsRestant;
     }
+
+    // Plus de coups restants
+    displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
+    this_thread::sleep_for(chrono::milliseconds(1000));
+    cout << "Vous avez épuisé tout les coups disponibles!" << endl;
+    this_thread::sleep_for(chrono::milliseconds(1000));
+    cout << "Votre score final: " << score;
+    this_thread::sleep_for(chrono::milliseconds(2000));
+    cout << " Pas mal!" << endl;
+    this_thread::sleep_for(chrono::milliseconds(4000));
     
     return score;
 
