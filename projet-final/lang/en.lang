@@ -16,10 +16,10 @@ menu__main__quit                    Quit
 
 menu__highscores__show              Show table
 menu__highscores__save              Save table
-menu__highscores__savename          Enter the filename to save the table into (w/ extension):
+menu__highscores__savename          Enter the filename to save the table into (w/o extension):
 menu__highscores__saved             Saved!
 menu__highscores__load              Load a table
-menu__highscores__loadname          Enter the filename to load the table from (w/ extension):
+menu__highscores__loadname          Enter the filename to load the table from (w/o extension):
 menu__highscores__loaded            Loaded!
 
 menu__param__language               Language
@@ -28,11 +28,12 @@ menu__param__movingway              Moving way
 menu__param__language__french       French
 menu__param__language__english      English
 menu__param__language__custom       Custom
-menu__param__language__loadname     Enter the language filename (w/ extension)
+menu__param__language__loadname     Enter the language filename (w/o extension)
 menu__param__language__loaded       Language changed!
 
 menu__param__movingway__abs         Instantaneous -> coordinates
 menu__param__movingway__rel         Cell by cell -> sequence of keys
+menu__param__movingway__changed     Changed!
 
 menu__about__title                  |-------ABOUT THE GAME-------|
 menu__about__name                   Name:
@@ -45,3 +46,31 @@ menu__about__legaldesc_l1           Project created as part of the Computer Scie
 menu__about__legaldesc_l2           It is inspired by an existing work.
 menu__about__legaldesc_l3           The ASCII logo was created at 'ascii.co.uk/text', with "Big" font.
 menu__about__legaldesc_l4           Upon request by the rights holders, the content will be modified or removed.
+
+////Ingame
+ingame__play__chooseline            Line:
+ingame__play__choosecolumn          Column:
+ingame__play__choosedirection       Direction
+ingame__play__cursor                Cursor: (
+ingame__play__move                  move
+ingame__play__confirm               confirm:
+ingame__play__swapdir               Swap direction
+ingame__play__wrongmove             Invalid movement
+
+ingame__result__endalert            You ran out of all your moves!
+ingame__result__finalscore          Final score:
+ingame__result__notbad              Not bad!
+
+ingame__ui__x                       Abscissa
+ingame__ui__y                       Ordinate
+ingame__ui__score                   Score:
+ingame__ui__remmoves                Remaining moves:
+
+ingame__score__nameentry            Please enter your name so your score can be save in the high scores table:
+ingame__score__saved                Entry saved!
+                                    
+
+
+
+
+

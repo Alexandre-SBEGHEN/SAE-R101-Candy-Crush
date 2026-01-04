@@ -1,4 +1,7 @@
+/////FRENCH TRANSLATION
 Français
+
+////Main menu
 menu__misc__back                    Retour
 menu__misc__current                 Actuel
 menu__misc__choosebutton            Sélectionnez un bouton :
@@ -11,12 +14,12 @@ menu__main__settings                Paramètres
 menu__main__about                   À propos
 menu__main__quit                    Quitter
 
-menu__highscores__show              Afficher le tableau
-menu__highscores__save              Enregistrer le tableau
-menu__highscores__savename          Entrez le nom du fichier dans lequel enregistrer le tableau (avec extension):
+menu__highscores__show              Afficher la table
+menu__highscores__save              Enregistrer la table
+menu__highscores__savename          Entrez le nom du fichier pour enregistrer la table (sans l'extension) :
 menu__highscores__saved             Enregistré !
 menu__highscores__load              Charger un tableau
-menu__highscores__loadname          Entrez le nom du fichier depuis lequel charger le tableau (avec extension):
+menu__highscores__loadname          Entrez le nom du fichier pour charger la table (sans l'extension) :
 menu__highscores__loaded            Chargé !
 
 menu__param__language               Langue
@@ -24,21 +27,45 @@ menu__param__movingway              Mode de déplacement
 
 menu__param__language__french       Français
 menu__param__language__english      Anglais
-menu__param__language__custom       Personnalisé
-menu__param__language__loadname     Entrez le nom du fichier de langue (avec extension)
+menu__param__language__custom       Personnalisée
+menu__param__language__loadname     Entrez le nom du fichier de langue (sans l'extension)
 menu__param__language__loaded       Langue modifiée !
 
 menu__param__movingway__abs         Instantané -> coordonnées
 menu__param__movingway__rel         Case par case -> séquence de touches
+menu__param__movingway__changed     Modifié !
 
 menu__about__title                  |-------À PROPOS DU JEU------|
-menu__about__name                   Nom:
-menu__about__version                Version:
-menu__about__authors                Auteurs:
-menu__about__desc                   Description:
+menu__about__name                   Nom :
+menu__about__version                Version :
+menu__about__authors                Auteurs :
+menu__about__desc                   Description :
 menu__about__descline               Un jeu de type Candy Crush développé en C++, jouable dans un terminal Unix.
-menu__about__legal                  Mentions légales:
+menu__about__legal                  Mentions légales :
 menu__about__legaldesc_l1           Projet réalisé dans le cadre du BUT Informatique, année 2025-2026.
 menu__about__legaldesc_l2           Il est inspiré d’une œuvre existante.
-menu__about__legaldesc_l3           Le logo ASCII a été créé à l’aide du générateur disponible sur ascii.co.uk/text, en utilisant la police « Big ».
-menu__about__legaldesc_l4           À la demande des ayants droit, le contenu pourra être modifié ou supprimé.
+menu__about__legaldesc_l3           Le logo ASCII a été créé sur « ascii.co.uk/text », avec la police « Big ».
+menu__about__legaldesc_l4           À la demande des ayants droit, le contenu pourra être modifié ou retiré.
+
+////Ingame
+ingame__play__chooseline            Ligne :
+ingame__play__choosecolumn          Colonne :
+ingame__play__choosedirection       Direction
+ingame__play__cursor                Curseur : (
+ingame__play__move                  déplacer
+ingame__play__confirm               confirmer :
+ingame__play__swapdir               Changer la direction
+ingame__play__wrongmove             Mouvement invalide
+
+ingame__result__endalert            Vous avez épuisé tous vos coups disponibles !
+ingame__result__finalscore          Score final :
+ingame__result__notbad              Pas mal !
+
+ingame__ui__x                       Abscisse
+ingame__ui__y                       Ordonnée
+ingame__ui__score                   Score :
+ingame__ui__remmoves                Coups restants :
+
+ingame__score__nameentry            Veuillez entrer votre nom afin que votre score soit enregistré dans la table des meilleurs scores :
+ingame__score__saved                Nom enregistrée !
+

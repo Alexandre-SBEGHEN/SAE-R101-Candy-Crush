@@ -287,7 +287,6 @@ DIST          = ../../lang/en.lang \
 		/opt/Qt-6.9/6.9.1/gcc_64/mkspecs/features/qt_config.prf \
 		/opt/Qt-6.9/6.9.1/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/opt/Qt-6.9/6.9.1/gcc_64/mkspecs/features/spec_post.prf \
-		../../.qmake.stash \
 		/opt/Qt-6.9/6.9.1/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/opt/Qt-6.9/6.9.1/gcc_64/mkspecs/features/toolchain.prf \
 		/opt/Qt-6.9/6.9.1/gcc_64/mkspecs/features/default_pre.prf \
@@ -551,7 +550,6 @@ Makefile: ../../projet-final.pro /opt/Qt-6.9/6.9.1/gcc_64/mkspecs/linux-g++/qmak
 		/opt/Qt-6.9/6.9.1/gcc_64/mkspecs/features/qt_config.prf \
 		/opt/Qt-6.9/6.9.1/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/opt/Qt-6.9/6.9.1/gcc_64/mkspecs/features/spec_post.prf \
-		.qmake.stash \
 		/opt/Qt-6.9/6.9.1/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/opt/Qt-6.9/6.9.1/gcc_64/mkspecs/features/toolchain.prf \
 		/opt/Qt-6.9/6.9.1/gcc_64/mkspecs/features/default_pre.prf \
@@ -791,7 +789,6 @@ Makefile: ../../projet-final.pro /opt/Qt-6.9/6.9.1/gcc_64/mkspecs/linux-g++/qmak
 /opt/Qt-6.9/6.9.1/gcc_64/mkspecs/features/qt_config.prf:
 /opt/Qt-6.9/6.9.1/gcc_64/mkspecs/linux-g++/qmake.conf:
 /opt/Qt-6.9/6.9.1/gcc_64/mkspecs/features/spec_post.prf:
-.qmake.stash:
 /opt/Qt-6.9/6.9.1/gcc_64/mkspecs/features/exclusive_builds.prf:
 /opt/Qt-6.9/6.9.1/gcc_64/mkspecs/features/toolchain.prf:
 /opt/Qt-6.9/6.9.1/gcc_64/mkspecs/features/default_pre.prf:
@@ -999,7 +996,8 @@ inGameDisplay.o: ../../inGameDisplay.cpp /opt/Qt-6.9/6.9.1/gcc_64/include/QtCore
 		/opt/Qt-6.9/6.9.1/gcc_64/include/QtCore/qobject_impl.h \
 		/opt/Qt-6.9/6.9.1/gcc_64/include/QtCore/qbindingstorage.h \
 		../../inGameDisplay.h \
-		../../typeList.h
+		../../typeList.h \
+		../../language.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o inGameDisplay.o ../../inGameDisplay.cpp
 
 updateEtat.o: ../../updateEtat.cpp ../../updateEtat.h \
@@ -1030,7 +1028,9 @@ candycrush.o: ../../candycrush.cpp ../../candycrush.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o candycrush.o ../../candycrush.cpp
 
 controls.o: ../../controls.cpp ../../controls.h \
-		../../typeList.h
+		../../typeList.h \
+		../../language.h \
+		../../inGameDisplay.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o controls.o ../../controls.cpp
 
 ####### Install

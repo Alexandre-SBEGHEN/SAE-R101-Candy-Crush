@@ -120,7 +120,7 @@ void removalInRow(mat & Grid, EtatMat & EtatGrid, maPosition pos, unsigned howMa
 }
 
 //------------------------------ Fonctions pour faire tomber les bonbons
-bool graviter(mat & Grid, EtatMat & EtatGrid, enum gravType gravDirection) {
+bool graviter(mat & Grid, enum gravType gravDirection) {
     bool change = false;
 
     if (gravDirection == UP || gravDirection == LEFT) {

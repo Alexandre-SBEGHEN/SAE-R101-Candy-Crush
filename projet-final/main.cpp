@@ -22,7 +22,8 @@ highsc_table highScores;
 execoption startOptions = {
     {"-lang", "../../lang/en.lang"},
     {"-highsc", "none"},
-    {"-fancydisplay", "false"}
+    {"-fancydisplay", "false"},
+    {"-movingway", "0"}
 };
 
 struct GameMenuButton {
@@ -66,6 +67,11 @@ struct ingameSettings {
 //Coeur du jeu
 int main(int argc, char** arg) {
     ////////// Options d'exécution
+    //Créer le struct des paramètres ingame
+    ingameSettings settings;
+    settings.movingway = 0;
+    settings.fancydisplay = false;
+
     //Vérifier si le programme est exécuté avec les bonnes options
     if (!option_assert_validity(argc)) {
         cerr << "Invalid option -- program can't start." << endl;
@@ -92,13 +98,10 @@ int main(int argc, char** arg) {
         }
     }
 
-    //Créer le struct des paramètres ingame
-    ingameSettings settings;
-    settings.movingway = 1;
-    settings.fancydisplay = false;
+    //Charger le mode de déplacement
+    if (startOptions["-movingway"] == "1") settings.movingway = 1;
 
     //Activer ou non le mode graphismes élevés
-    settings.fancydisplay = false;
     if (startOptions["-fancydisplay"] != "false" && startOptions["-fancydisplay"] != "0") settings.fancydisplay = true;
 
     //////////
@@ -201,105 +204,130 @@ int main(int argc, char** arg) {
 
         //Choisir quoi faire en fonction de `action`
         switch (action) {
-        //Parcourir le menu vers l'avant
-        case FORWARD:
-            GameMenuCurrent = GameMenuCurrent->children[choice];
-            break;
+            //Parcourir le menu vers l'avant
+            case FORWARD:
+                GameMenuCurrent = GameMenuCurrent->children[choice];
+                break;
 
-        //Retourner vers le sous menu parent ou quitter
-        case BACKWARD:
-            if (GameMenuCurrent->parent == nullptr) //Si on est à la racine on quitte
-                return 0;
-            else
-                GameMenuCurrent = GameMenuCurrent->parent; //Sinon on va en arrière
+            //Retourner vers le sous menu parent ou quitter
+            case BACKWARD:
+                if (GameMenuCurrent->parent == nullptr) //Si on est à la racine on quitte
+                    return 0;
+                else
+                    GameMenuCurrent = GameMenuCurrent->parent; //Sinon on va en arrière
 
-            break;
+                break;
 
-        //Ne rien faire
-        case ACTION: break;
+            //Ne rien faire
+            case ACTION: break;
 
-            //Jouer
-        case ACTION_PLAY: {
-            size_t score = candycrush_play(languageTexts, settings.movingway, settings.fancydisplay);
-            cout << "test" << endl;
-            return 1;
-            break;
-        }
+                //Jouer
+            case ACTION_PLAY: {
+                size_t score = candycrush_play(languageTexts, settings.movingway, settings.fancydisplay);
 
-            //Afficher la table des high scores
-        case ACTION_HIGHSC_SHOW:
-            for (size_t i = 0; i < highScores.size(); ++i) cout << i+1 << " -  " << highScores[i].second << '\t' << highScores[i].first << endl;
+                cout << languageTexts["ingame__score__nameentry"] << endl;
+                string name;
+                cin >> name;
 
-            cout << languageTexts["menu__misc__pressenter"];
-            cin.ignore();
-            cin.get();
+                highsc_entry entry = {name, score};
+                highscores_insert_entry_into(entry, highScores);
 
-            break;
+                cout << languageTexts["menu__highscores__saved"] << ' ' << languageTexts["menu__misc__pressenter"];
+                cin.ignore();
+                cin.get();
+                break;
+            }
 
-        //Sauvegarder la table des high scores
-        case ACTION_HIGHSC_SAVE: {
-            cout << languageTexts["menu__highscores__savename"] << ' ' << endl;
-            string filename;
-            cin >> filename;
+                //Afficher la table des high scores
+            case ACTION_HIGHSC_SHOW:
+                for (size_t i = 0; i < highScores.size(); ++i) cout << i+1 << " -  " << highScores[i].second << '\t' << highScores[i].first << endl;
 
-            highscores_saveto(highScores, filename + ".hs");
+                cout << languageTexts["menu__misc__pressenter"];
+                cin.ignore();
+                cin.get();
 
-            cout << languageTexts["menu__highscores__saved"] << ' ' << languageTexts["menu__misc__pressenter"];
-            cin.ignore();
-            cin.get();
+                break;
 
-            break;
-        }
-        //Charger la table des high scores
-        case ACTION_HIGHSC_LOAD: {
-            cout << languageTexts["menu__highscores__loadname"] << ' ' << endl;
-            string filename;
-            cin >> filename;
+            //Sauvegarder la table des high scores
+            case ACTION_HIGHSC_SAVE: {
+                cout << languageTexts["menu__highscores__savename"] << ' ' << endl;
+                string filename;
+                cin >> filename;
 
-            bool isloaded = highscores_loadto(filename, highScores);
-            cout << ((isloaded) ? languageTexts["menu__highscores__loaded"] : languageTexts["menu__misc__filenotfound"]);
+                highscores_saveto(highScores, filename + ".hs");
+
+                cout << languageTexts["menu__highscores__saved"] << ' ' << languageTexts["menu__misc__pressenter"];
+                cin.ignore();
+                cin.get();
+
+                break;
+            }
+            //Charger la table des high scores
+            case ACTION_HIGHSC_LOAD: {
+                cout << languageTexts["menu__highscores__loadname"] << ' ' << endl;
+                string filename;
+                cin >> filename;
+
+                bool isloaded = highscores_loadto(filename + ".hs", highScores);
+                cout << ((isloaded) ? languageTexts["menu__highscores__loaded"] : languageTexts["menu__misc__filenotfound"]);
 
 
-            cout << ' ' << languageTexts["menu__misc__pressenter"];
-            cin.ignore();
-            cin.get();
+                cout << ' ' << languageTexts["menu__misc__pressenter"];
+                cin.ignore();
+                cin.get();
 
-            break;
-        }
+                break;
+            }
 
-            //Mettre la langue en français
-        case ACTION_PARAM_LANG_FR:
-            language_get_texts_from_file_to("../../lang/fr.lang", languageTexts);
+                //Mettre la langue en français
+            case ACTION_PARAM_LANG_FR:
+                language_get_texts_from_file_to("../../lang/fr.lang", languageTexts);
 
-            cout << languageTexts["menu__param__language__loaded"] << ' ' << languageTexts["menu__misc__pressenter"];
-            cin.ignore();
-            cin.get();
-            break;
+                cout << languageTexts["menu__param__language__loaded"] << ' ' << languageTexts["menu__misc__pressenter"];
+                cin.ignore();
+                cin.get();
+                break;
 
-        //Mettre la langue en anglais
-        case ACTION_PARAM_LANG_EN:
-            language_get_texts_from_file_to("../../lang/en.lang", languageTexts);
+            //Mettre la langue en anglais
+            case ACTION_PARAM_LANG_EN:
+                language_get_texts_from_file_to("../../lang/en.lang", languageTexts);
 
-            cout << languageTexts["menu__param__language__changed"] << ' ' << languageTexts["menu__misc__pressenter"];
-            cin.ignore();
-            cin.get();
-            break;
+                cout << languageTexts["menu__param__language__loaded"] << ' ' << languageTexts["menu__misc__pressenter"];
+                cin.ignore();
+                cin.get();
+                break;
 
-        //Mettre la langue en personnalisé
-        case ACTION_PARAM_LANG_CUSTOM: {
-            cout << languageTexts["menu__param__language__loadname"] << ' ' << endl;
-            string filename;
-            cin >> filename;
+            //Mettre la langue en personnalisé
+            case ACTION_PARAM_LANG_CUSTOM: {
+                cout << languageTexts["menu__param__language__loadname"] << ' ' << endl;
+                string filename;
+                cin >> filename;
 
-            bool isloaded = language_get_texts_from_file_to(filename, languageTexts);
+                bool isloaded = language_get_texts_from_file_to(filename + ".lang", languageTexts);
 
-            cout << ((isloaded) ? languageTexts["menu__param__language__loaded"] : languageTexts["menu__misc__filenotfound"]);
+                cout << ((isloaded) ? languageTexts["menu__param__language__loaded"] : languageTexts["menu__misc__filenotfound"]);
 
-            cout << ' ' << languageTexts["menu__misc__pressenter"];
-            cin.ignore();
-            cin.get();
-            break;
-        }
+                cout << ' ' << languageTexts["menu__misc__pressenter"];
+                cin.ignore();
+                cin.get();
+                break;
+            }
+
+            //Changer le mode de déplacement en absolu (coordonnées)
+            case ACTION_PARAM_MOV_ABS:
+                settings.movingway = 0;
+                cout << languageTexts["menu__param__movingway__changed"] << ' ' << languageTexts["menu__misc__pressenter"];
+                cin.ignore();
+                cin.get();
+                break;
+
+            //Changer le mode de déplacement en relatif (séquence de touches)
+            case ACTION_PARAM_MOV_REL:
+                settings.movingway = 1;
+                cout << languageTexts["menu__param__movingway__changed"] << ' ' << languageTexts["menu__misc__pressenter"];
+                cin.ignore();
+                cin.get();
+                break;
         }
     }
 

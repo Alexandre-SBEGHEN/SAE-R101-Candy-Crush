@@ -16,7 +16,7 @@
  * @param movingway Le mode de déplacement.
  * @param fancydisplay Activer ou non les graphismes élevés.
  */
-size_t candycrush_play(const gametexts & texts, const size_t & movingway, const bool & fancydisplay);
+size_t candycrush_play(gametexts texts, const size_t & movingway, const bool & fancydisplay);
 
 
 #endif

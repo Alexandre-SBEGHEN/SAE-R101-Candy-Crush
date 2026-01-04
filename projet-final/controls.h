@@ -8,6 +8,7 @@
 #ifndef CONTROLS_H
 #define CONTROLS_H
 #include <typeList.h>
+#include <language.h>
 using namespace std;
 
 //Struct de validation du mouvement entre deux positions
@@ -35,7 +36,7 @@ swapResult moveByCoordinates(mat & grid, unsigned ligne, unsigned colonne, char 
  * @param details Le niveau de graphisme
  * @param score Le score actuel du joueur
  */
-swapResult moveByCursor(mat & grid, EtatMat EtatGrid, graphisme details, size_t score, int coupsRestant);
+swapResult moveByCursor(gametexts texts, mat & grid, EtatMat EtatGrid, graphisme details, size_t score, int coupsRestant);
 
 /**
  * @brief Vérifie si un mouvement est valide.

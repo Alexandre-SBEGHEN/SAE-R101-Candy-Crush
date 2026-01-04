@@ -59,4 +59,4 @@ void removalInRow(mat & Grid, EtatMat & EtatGrid, maPosition pos, unsigned howMa
  * @param EtatGrid La matrice des états des cases de la grille
  * @param gravDirection La direction de la gravité
  */
-bool graviter(mat & Grid, EtatMat & EtatGrid, enum gravType gravDirection);
+bool graviter(mat & Grid, enum gravType gravDirection);
