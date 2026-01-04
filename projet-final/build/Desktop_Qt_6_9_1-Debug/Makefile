@@ -59,7 +59,8 @@ SOURCES       = ../../main.cpp \
 		../../highscores.cpp \
 		../../language.cpp \
 		../../option.cpp \
-		../../candycrush.cpp 
+		../../candycrush.cpp \
+		../../controls.cpp 
 OBJECTS       = main.o \
 		inGameDisplay.o \
 		updateEtat.o \
@@ -67,7 +68,8 @@ OBJECTS       = main.o \
 		highscores.o \
 		language.o \
 		option.o \
-		candycrush.o
+		candycrush.o \
+		controls.o
 DIST          = ../../lang/en.lang \
 		../../lang/fr.lang \
 		/opt/Qt-6.9/6.9.1/gcc_64/mkspecs/features/spec_pre.prf \
@@ -313,14 +315,16 @@ DIST          = ../../lang/en.lang \
 		../../highscores.h \
 		../../language.h \
 		../../option.h \
-		../../candycrush.h ../../main.cpp \
+		../../candycrush.h \
+		../../controls.h ../../main.cpp \
 		../../inGameDisplay.cpp \
 		../../updateEtat.cpp \
 		../../file.cpp \
 		../../highscores.cpp \
 		../../language.cpp \
 		../../option.cpp \
-		../../candycrush.cpp
+		../../candycrush.cpp \
+		../../controls.cpp
 QMAKE_TARGET  = projet-final
 DESTDIR       = 
 TARGET        = projet-final
@@ -826,8 +830,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /opt/Qt-6.9/6.9.1/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../../typeList.h ../../inGameDisplay.h ../../updateEtat.h ../../file.h ../../highscores.h ../../language.h ../../option.h ../../candycrush.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../../main.cpp ../../inGameDisplay.cpp ../../updateEtat.cpp ../../file.cpp ../../highscores.cpp ../../language.cpp ../../option.cpp ../../candycrush.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../../typeList.h ../../inGameDisplay.h ../../updateEtat.h ../../file.h ../../highscores.h ../../language.h ../../option.h ../../candycrush.h ../../controls.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../../main.cpp ../../inGameDisplay.cpp ../../updateEtat.cpp ../../file.cpp ../../highscores.cpp ../../language.cpp ../../option.cpp ../../candycrush.cpp ../../controls.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -1021,8 +1025,13 @@ candycrush.o: ../../candycrush.cpp ../../candycrush.h \
 		../../language.h \
 		../../typeList.h \
 		../../inGameDisplay.h \
-		../../updateEtat.h
+		../../updateEtat.h \
+		../../controls.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o candycrush.o ../../candycrush.cpp
+
+controls.o: ../../controls.cpp ../../controls.h \
+		../../typeList.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o controls.o ../../controls.cpp
 
 ####### Install
 

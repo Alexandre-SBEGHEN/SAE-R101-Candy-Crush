@@ -11,6 +11,7 @@ SOURCES += \
         language.cpp \
         option.cpp \
         candycrush.cpp \
+        controls.cpp \
 
 HEADERS += \
         typeList.h \
@@ -21,6 +22,7 @@ HEADERS += \
         language.h \
         option.h \
         candycrush.h \
+        controls.h \
 
 DISTFILES += \
         lang/en.lang \

@@ -1,39 +1,47 @@
 /**
- *  @date : 23 décembre 2025
- *  @author : Nicolas Moyenin
- *  @Brief : Fonctions qui permettent d'echanger les bonbons
-**/
+ * @file controls.h
+ * @brief Fichier header pour la gestion de flux d'entrée et de sortie
+ * @author Nicolas MOYENIN
+ * @date 04/01/2026
+ * @version 1.0
+ */
+#ifndef CONTROLS_H
+#define CONTROLS_H
+#include <typeList.h>
+using namespace std;
 
-
-//-------------- Fonction Verif mouv valide --------------//
-/**
- * @brief Verifie si le mouvements du joueur est correcte
- * @param grid la grille de jeu
- * @param pos Position actuelle
- * @param direction le sens de déplacement (ZSQD)
- **/
-
-bool moveIsValid(mat & grid, const maPosition & pos, char direction);
-
-// -------------- Mouvements --------------//
+//Struct de validation du mouvement entre deux positions
 struct swapResult {
-    bool ok;            // move valide ? --> definie a false par defaut
+    bool ok;            // le mouvement est valide ?
     maPosition p1;      // première case
     maPosition p2;      // deuxième case
 };
 
 /**
- * @brief Deplacement a partir des coordonnees
- * @param grid la grille de jeu
- * @param ligne Coordonnee de la ligne a echanger
- * @param colonne Coordonnee de la colonne a echanger
- * @param direction le sens de déplacement (ZSQD)
- **/
+ * @brief Se déplacer selon la méthode 1
+ *
+ * @param grid La grille du jeu
+ * @param ligne La ligne acuelle
+ * @param colonne La colonne actuelle
+ * @param direction La direction du mouvement
+ */
 swapResult moveByCoordinates(mat & grid, unsigned ligne, unsigned colonne, char direction);
 
-
 /**
- * @brief deplacement avec le curseur
- * @param grid la grille de jeu
+ * @brief Se déplacer selon la méthode 2
+ *
+ * @param grid La grille du jeu
  */
 swapResult moveByCursor(mat & grid);
+
+/**
+ * @brief Vérifie si un mouvement est valide.
+ *
+ * @param grid La grille du jeu
+ * @param pos Position actuelle
+ * @param direction La direction du mouvement
+ * @return Si le mouvement est valide
+ */
+bool moveIsValid(mat & grid, const maPosition & pos, char direction);
+
+#endif

@@ -1,19 +1,6 @@
-/**
- *  @date : 23 décembre 2025
- *  @author : Nicolas Moyenin
- *  @Brief : Fonctions qui permettent d'echanger les bonbons
-**/
-
 #include <iostream>
-#include <vector>
-#include <cstdlib>
-#include <ctime>
-
 #include <controls.h>
-
 using namespace std;
-//-------------- Fonction Verif mouv valide --------------//
-
 
 bool moveIsValid(mat & grid, const maPosition & pos, char direction)
 {
@@ -23,46 +10,38 @@ bool moveIsValid(mat & grid, const maPosition & pos, char direction)
 
     switch(direction)
     {
-    case 'Z': tRow--; break;
-    case 'S': tRow++; break;
-    case 'Q': tCol--; break;
-    case 'D': tCol++; break;
+    case 'Z': case 'z': tRow--; break;
+    case 'S': case 's': tRow++; break;
+    case 'Q': case 'q': tCol--; break;
+    case 'D': case 'd': tCol++; break;
     default: return false;
     }
 
     // Hors grille
-    if(tRow < 0 || tRow >= static_cast<int>(grid.size()) || //static_cast permet de convertir un type en un autre. Tres important ici
+    if(tRow < 0 || tRow >= static_cast<int>(grid.size()) ||
         tCol < 0 || tCol >= static_cast<int>(grid[0].size()))
         return false;
 
     // Sauvegarde
     mat save = grid;
 
-    // Effectue echange
+    // Effectuer l'Ã©change
     swap(grid[pos.abs][pos.ord], grid[tRow][tCol]);
+    cout << "SWAP" << endl;
 
     maPosition p;
     unsigned howMany;
 
-    // Teste alignements
-    bool ok = atLeastThreeInARow(grid, p, howMany)
-              || atLeastThreeInAColumn(grid, p, howMany);
+    // Tester alignements
+    bool ok = /*atLeastThreeInARow(grid, p, howMany)
+              || atLeastThreeInAColumn(grid, p, howMany)*/true;
 
-    // Cancel si invalide
+    // Annuler si invalide
     if(!ok)
         grid = save;
 
-    return ok;
+    return true;
 }
-
-
-// -------------- Mouvements --------------//
-struct swapResult {
-    bool ok;            // move valide ? --> definie a false par defaut
-    maPosition p1;      // première case
-    maPosition p2;      // deuxième case
-};
-
 
 swapResult moveByCoordinates(mat & grid, unsigned ligne, unsigned colonne, char direction)
 {
@@ -72,10 +51,10 @@ swapResult moveByCoordinates(mat & grid, unsigned ligne, unsigned colonne, char 
     maPosition p2 = p1;
 
     switch(direction) {
-    case 'Z': case 'z': p2.abs--; break;
-    case 'S': case 's': p2.abs++; break;
-    case 'Q': case 'q': p2.ord--; break;
-    case 'D': case 'd': p2.ord++; break;
+    case 'Z': case 'z': --p2.abs; break;
+    case 'S': case 's': ++p2.abs; break;
+    case 'Q': case 'q': --p2.ord; break;
+    case 'D': case 'd': ++p2.ord; break;
     default:
         return res;
     }
@@ -103,7 +82,7 @@ swapResult moveByCursor(mat & grid)
     char input;
 
     while (true) {
-        displayGrid(grid);
+        //displayGrid(grid);
         cout << "Curseur : (" << cursor.abs << "," << cursor.ord << ")\n";
         cout << "ZQSD déplacer, E valider : ";
         cin >> input;
