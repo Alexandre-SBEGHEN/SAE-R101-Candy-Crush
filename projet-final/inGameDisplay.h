@@ -1,8 +1,9 @@
 /**
- *  @date : 26 décembre 2025
- *  @author : Audren Metery-Drouin
- *  @Brief : Les fonctions utilisées pour afficher la grille
-**/
+ * @file inGameDisplay.h
+ * @brief Les fonctions utilisées pour afficher la grille
+ * @date 26 décembre 2025
+ * @author Audren Metery-Drouin
+ */
 
 #include <typeList.h>
 #include <language.h>

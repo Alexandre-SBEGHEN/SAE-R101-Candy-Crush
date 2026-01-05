@@ -1,8 +1,9 @@
 /**
- *  @date : 24 décembre 2025
- *  @author : Audren Metery-Drouin
- *  @Brief : Les types ou struct custom utilisés par les autres scripts
-**/
+ * @file typeList.h
+ * @brief Les types ou struct custom utilisés par les autres scripts
+ * @date 24 décembre 2025
+ * @author Audren Metery-Drouin
+ */
 
 #include <iostream>
 #include <vector>

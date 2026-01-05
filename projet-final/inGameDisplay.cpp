@@ -1,8 +1,9 @@
 /**
- *  @date : 27 décembre 2025
- *  @author : Audren Metery-Drouin
- *  @Brief : Les fonctions utilisées pour afficher la grille
-**/
+ * @file inGameDisplay.cpp
+ * @brief Les fonctions utilisées pour afficher la grille
+ * @date 27 décembre 2025
+ * @author Audren Metery-Drouin
+ */
 
 #include <iostream>
 #include <vector>

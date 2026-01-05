@@ -1,8 +1,9 @@
 /**
- *  @date : 25 décembre 2025
- *  @author : Audren Metery-Drouin
- *  @Brief : Les fonctions utilisées pour éliminer les bonbons et cases et appliquer la gravité
-**/
+ * @file updateEtat.cpp
+ * @brief Les fonctions utilisées pour éliminer les bonbons et cases et appliquer la gravité
+ * @date 25 décembre 2025
+ * @author Audren Metery-Drouin
+ */
 
 #include <updateEtat.h>
 
