@@ -2,7 +2,7 @@
 Un jeu Candy Crush like réalisé en C++ entièrement jouable dans le terminal de commandes
 
 ## Important
-Nom du fichier final : ```TD_1_E_2_METERY-DROUIN-Audren_MOYENIN-Nicolas_SBEGHEN-MAGNIN-Alexandre.zip```
+Nom du fichier final : ```TD_1_E_2_METERY-DROUIN_MOYENIN_SBEGHEN-MAGNIN.zip```
 
 ## Infos Diverses
 
