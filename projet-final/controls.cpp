@@ -1,6 +1,7 @@
 #include <iostream>
 #include <controls.h>
 #include <inGameDisplay.h>
+#include <language.h>
 using namespace std;
 
 bool moveIsValid(mat & grid, const maPosition & pos, char direction)
@@ -78,17 +79,17 @@ swapResult moveByCoordinates(mat & grid, unsigned ligne, unsigned colonne, char 
 }
 
 
-swapResult moveByCursor(mat & grid, EtatMat EtatGrid, graphisme details, size_t score, int coupsRestant)
+swapResult moveByCursor(gametexts texts, mat & grid, EtatMat EtatGrid, graphisme details, size_t score, int coupsRestant)
 {
     maPosition cursor{0, 0};
     char input;
 
     while (true) {
 
-        displayGrid(grid, EtatGrid, MOUVEMENT, cursor, details, score, coupsRestant);
+        displayGrid(texts, grid, EtatGrid, MOUVEMENT, cursor, details, score, coupsRestant);
 
-        cout << "Curseur : (" << cursor.abs+1 << "," << cursor.ord+1 << ")\n";
-        cout << "ZQSD déplacer, E valider : ";
+        cout << texts["ingame__play__cursor"] << cursor.abs+1 << "," << cursor.ord+1 << ")\n";
+        cout << "ZQSD " << texts["ingame__play__move"] << ", E " << texts["ingame__play__confirm"] << ' ';
         cin >> input;
 
         if (input == 'E' || input == 'e')
@@ -102,7 +103,7 @@ swapResult moveByCursor(mat & grid, EtatMat EtatGrid, graphisme details, size_t 
         }
     }
 
-    cout << "Direction échange (ZQSD) : ";
+    cout << texts["ingame__play__swapdir"] << " (ZQSD) : ";
     char dir;
     cin >> dir;
 

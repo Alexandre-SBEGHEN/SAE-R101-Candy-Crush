@@ -1,8 +1,9 @@
 /**
- *  @date : 27 décembre 2025
- *  @author : Audren Metery-Drouin
- *  @Brief : Les fonctions utilisées pour afficher la grille
-**/
+ * @file inGameDisplay.cpp
+ * @brief Les fonctions utilisées pour afficher la grille
+ * @date 27 décembre 2025
+ * @author Audren Metery-Drouin
+ */
 
 #include <iostream>
 #include <vector>
@@ -59,7 +60,7 @@ void clearScreen () {
     cout << "\033[H\033[2J";
 }
 
-void displayGrid(mat Tableau, EtatMat TableauEtat, enum StatusGame Status, maPosition CurrentPos, enum graphisme Details, size_t score, int coupsRestant) {
+void displayGrid(gametexts texts, mat Tableau, EtatMat TableauEtat, enum StatusGame Status, maPosition CurrentPos, enum graphisme Details, size_t score, int coupsRestant) {
 
     // On efface l'écran
     clearScreen();
@@ -67,7 +68,7 @@ void displayGrid(mat Tableau, EtatMat TableauEtat, enum StatusGame Status, maPos
     // Affichage des abscisses
     if (Status == ABS || Status == MOUVEMENT) {
         couleur(KVert);
-        cout << "Abscisse --> |";
+        cout << texts["ingame__ui__x"] << " --> |";
         for (size_t i=0; i<size(Tableau); ++i) {
             if (i == CurrentPos.abs) {
                 couleur(KRougeClair+10);
@@ -86,7 +87,7 @@ void displayGrid(mat Tableau, EtatMat TableauEtat, enum StatusGame Status, maPos
     // Affichage des ordonnées
     if (Status == ORD || Status == ABS || Status == MOUVEMENT) {
         couleur(KVert);
-        cout << "Ordonnée v" << endl;
+        cout << texts["ingame__ui__y"] << " v" << endl;
     } else cout << endl;
 
     // Display of the grid
@@ -145,8 +146,8 @@ void displayGrid(mat Tableau, EtatMat TableauEtat, enum StatusGame Status, maPos
             cout << '|';
         }
         // Display score
-        string scoreTxt = "Score: " + to_string(score);
-        string coupsRestantTxt = "Coups restant: " + to_string(coupsRestant);
+        string scoreTxt = texts["ingame__ui__score"] + " " + to_string(score);
+        string coupsRestantTxt = texts["ingame__ui__remmoves"] + " " + to_string(coupsRestant);
 
         size_t maxSize = scoreTxt.size();
         if (coupsRestantTxt.size()>maxSize) maxSize=coupsRestantTxt.size();

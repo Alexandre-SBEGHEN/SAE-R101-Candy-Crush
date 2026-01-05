@@ -1,0 +1,94 @@
+\doxysection{type\+List.\+h File Reference}
+\hypertarget{typeList_8h}{}\label{typeList_8h}\index{typeList.h@{typeList.h}}
+
+
+Les types ou struct custom utilisés par les autres scripts.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+Include dependency graph for type\+List.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=262pt]{typeList_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{typeList_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structmaPosition}{ma\+Position}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{typeList_8h_a4933e286520b3b8b86b2b7f27fd1959c}\label{typeList_8h_a4933e286520b3b8b86b2b7f27fd1959c} 
+typedef vector$<$ unsigned $>$ {\bfseries line}
+\item 
+\Hypertarget{typeList_8h_aee710f500ed8d179390ae3862af69d24}\label{typeList_8h_aee710f500ed8d179390ae3862af69d24} 
+typedef vector$<$ line $>$ {\bfseries mat}
+\item 
+\Hypertarget{typeList_8h_ad30872e6dd5161674c9de8063fe6fd9a}\label{typeList_8h_ad30872e6dd5161674c9de8063fe6fd9a} 
+typedef vector$<$ enum Status\+Case $>$ {\bfseries Etatline}
+\item 
+\Hypertarget{typeList_8h_ab23d45a6ee856ce1e8b793fca2c1c782}\label{typeList_8h_ab23d45a6ee856ce1e8b793fca2c1c782} 
+typedef vector$<$ Etatline $>$ {\bfseries Etat\+Mat}
+\item 
+\Hypertarget{typeList_8h_ac2a599443b6d86c11d59f998372e4aa4}\label{typeList_8h_ac2a599443b6d86c11d59f998372e4aa4} 
+using {\bfseries gametexts} = map$<$ string, string $>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{typeList_8h_a7d9abc7485edc819de0ebb565a4eb5ef}\label{typeList_8h_a7d9abc7485edc819de0ebb565a4eb5ef} 
+enum {\bfseries Status\+Game} \{ {\bfseries IDLE}
+, {\bfseries ORD}
+, {\bfseries ABS}
+, {\bfseries MOUVEMENT}
+ \}
+\item 
+\Hypertarget{typeList_8h_a6a43b891333e4555bcfc0395aebe82ce}\label{typeList_8h_a6a43b891333e4555bcfc0395aebe82ce} 
+enum {\bfseries Status\+Case} \{ {\bfseries NORMAL}
+, {\bfseries GLACE}
+, {\bfseries GLACE\+\_\+\+FAIBLE}
+ \}
+\item 
+\Hypertarget{typeList_8h_a51ea33b60501a52c7bd8228601f1b48a}\label{typeList_8h_a51ea33b60501a52c7bd8228601f1b48a} 
+enum {\bfseries graphisme} \{ {\bfseries LOW}
+, {\bfseries HIGH}
+ \}
+\item 
+\Hypertarget{typeList_8h_abcb31d29efe2a042679a0642fff64665}\label{typeList_8h_abcb31d29efe2a042679a0642fff64665} 
+enum {\bfseries grav\+Type} \{ {\bfseries UP}
+, {\bfseries DOWN}
+, {\bfseries LEFT}
+, {\bfseries RIGHT}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{typeList_8h_a4cb90d87ae02883f0e5be6d924617226}\label{typeList_8h_a4cb90d87ae02883f0e5be6d924617226} 
+const unsigned {\bfseries KImpossible} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Les types ou struct custom utilisés par les autres scripts. 
+
+\begin{DoxyDate}{Date}
+24 décembre 2025 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Audren Metery-\/\+Drouin 
+\end{DoxyAuthor}

@@ -1,0 +1,7 @@
+<map id="highscores.h" name="highscores.h">
+<area shape="rect" id="Node000001" title="Fichier header pour le fonctionnement de la table des high scores." alt="" coords="74,5,178,31"/>
+<area shape="rect" id="Node000002" href="$highscores_8cpp.html" title="Script pour le fonctionnement de la table des high scores." alt="" coords="5,79,124,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,43,77,80,73,77,105,40"/>
+<area shape="rect" id="Node000003" href="$main_8cpp.html" title="Script principal du jeu." alt="" coords="147,79,230,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="147,39,181,77,177,80,143,43"/>
+</map>

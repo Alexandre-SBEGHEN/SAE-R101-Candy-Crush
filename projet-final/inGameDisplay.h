@@ -1,10 +1,12 @@
 /**
- *  @date : 26 décembre 2025
- *  @author : Audren Metery-Drouin
- *  @Brief : Les fonctions utilisées pour afficher la grille
-**/
+ * @file inGameDisplay.h
+ * @brief Les fonctions utilisées pour afficher la grille
+ * @date 26 décembre 2025
+ * @author Audren Metery-Drouin
+ */
 
 #include <typeList.h>
+#include <language.h>
 
 //------------------------------ Fonctions d'affichage
 /**
@@ -38,7 +40,7 @@ void clearScreen ();
  * @param CurrentPos La position actuelle sélectionner
  * @param coupsRestant Le nombre de coups restants au joueur
  */
-void displayGrid(mat Tableau, EtatMat TableauEtat, enum StatusGame Status, maPosition CurrentPos, enum graphisme Details, size_t score, int coupsRestant);
+void displayGrid(gametexts texts, mat Tableau, EtatMat TableauEtat, enum StatusGame Status, maPosition CurrentPos, enum graphisme Details, size_t score, int coupsRestant);
 
 //------------------------------ Fonctions d'initialisation des grilles
 /**

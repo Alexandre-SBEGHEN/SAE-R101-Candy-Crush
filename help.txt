@@ -1,0 +1,19 @@
+----------
+Le programme peut être exécuté avec des options de lancement, tout comme une vraie commande Unix. Pour cela, il suffit de commencer par éxécuter le programme avec './projet-final' puis de rajouter les options. Elles s'utilisent via des couples clé/valeur. Il faut donc, dans le cas où on exécute le programme avec des options, que le nombre d'arguments, en incluant le './projet-final', soit IMPAIR. Il est possible d'entrer des options qui ne sont pas prises en charge par le jeu, toutefois, elles n'auront aucun effet.
+
+Les options de lancement sont les suivantes:
+
+'-lang FICHIER' : permet de lancer le jeu dans une certaine langue. Il faut spécifier le fichier .lang qui contient tous les textes du jeu. Si le fichier n'est pas reconnu ou est inexistant, le programme ne peut pas démarrer.
+'-highsc FICHIER' : permet de lancer le jeu en chargant une table des meilleurs scores, dans un fichier .hs. Si le fichier n'est pas reconnu ou est inexistant, une table vide sera créée.
+'-movingway VAL' : permet de définir directement la manière de jouer au jeu, qui est le mode de déplacement, qui est expliqué ultèrieurement dans ce fichier. 0 correspond au premier mode, 1 au deuxième.
+
+BONUS: il est possible, avec l'option '-fancydisplay true' de jouer au jeu avec des "Graphismes Elevés", c'est à dire jouer avec des émojis à la place des chiffres.
+----------
+Le joueur peut naviguer dans le menu du jeu pour lui permettre de faire diverses actions, telles que lancer une partie, consulter les meilleurs scores, accéder aux paramètres et les modifier, etc.
+----------
+Il existe deux façons de jouer au jeu.
+
+La première, est dite Absolue. C'est à dire que l'on doit entrer d'abord l'ordonnée (la ligne), puis l'abscisse (la colonne) du bonbon que l'on veut déplacer. La première ligne a pour numéro 0, et idem pour la première colonne. Une fois que les coordonnées sont choisies, il suffit de choisir une direction de déplacement. Les touches sur lequelles appuyer pour choisir la direction sont indiquées au joueur.
+
+
+La seconde, est dite Relative. On demande au joueur de se déplacer dans la grille en entrant une ou plusieurs fois une touche de déplacement, qui sont indiquées au joueur. Il peut se déplacer vers le haut, le bas, la gauche, et la droite. Une fois que le joueur se trouve sur le bonbon qu'il souhaite déplacer, il lui suffit de valider sa position, puis de choisir la direction vers laquelle déplacer le bonbon. Tout comme le mode Absolu, les touches sont indiquées au joueur.

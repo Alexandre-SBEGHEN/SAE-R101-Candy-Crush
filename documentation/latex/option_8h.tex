@@ -1,0 +1,96 @@
+\doxysection{option.\+h File Reference}
+\hypertarget{option_8h}{}\label{option_8h}\index{option.h@{option.h}}
+
+
+Fichier header de gestion d\textquotesingle{}options de lancement du programme.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+Include dependency graph for option.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{option_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{option_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{option_8h_a1fdabd101ac583bb77cd25f3d93ffb73}\label{option_8h_a1fdabd101ac583bb77cd25f3d93ffb73} 
+using {\bfseries execoption} = map$<$ string, string $>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{option_8h_a3175b72bbafe166af93c4ac0edb3b442}{option\+\_\+assert\+\_\+validity}} (const int \&argc)
+\begin{DoxyCompactList}\small\item\em Vérifie que les options d\textquotesingle{}éxécution du programme soient valides. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{option_8h_aed73852e2c9178e4db4354f149d50a6d}{option\+\_\+parse\+\_\+to}} (execoption \&options, int argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}arg)
+\begin{DoxyCompactList}\small\item\em Insère ou modifie les options d\textquotesingle{}exécution dans une/d\textquotesingle{}une table {\ttfamily execoption}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Fichier header de gestion d\textquotesingle{}options de lancement du programme. 
+
+\begin{DoxyAuthor}{Author}
+Alexandre SBEGHEN 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+27/12/2025 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{option_8h_a3175b72bbafe166af93c4ac0edb3b442}\label{option_8h_a3175b72bbafe166af93c4ac0edb3b442} 
+\index{option.h@{option.h}!option\_assert\_validity@{option\_assert\_validity}}
+\index{option\_assert\_validity@{option\_assert\_validity}!option.h@{option.h}}
+\doxysubsubsection{\texorpdfstring{option\_assert\_validity()}{option\_assert\_validity()}}
+{\footnotesize\ttfamily bool option\+\_\+assert\+\_\+validity (\begin{DoxyParamCaption}\item[{const int \&}]{argc }\end{DoxyParamCaption})}
+
+
+
+Vérifie que les options d\textquotesingle{}éxécution du programme soient valides. 
+
+Il doit y avoir soit aucune option, soit un ou plusieurs COUPLES (option, valeur).
+
+Mettre des options inexistantes n\textquotesingle{}aura aucun effet tant qu\textquotesingle{}elles sont enregistrées correctement.
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & Le nombre d\textquotesingle{}arguments lors de l\textquotesingle{}appel du programme. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La validité des options d\textquotesingle{}exécution. 
+\end{DoxyReturn}
+\Hypertarget{option_8h_aed73852e2c9178e4db4354f149d50a6d}\label{option_8h_aed73852e2c9178e4db4354f149d50a6d} 
+\index{option.h@{option.h}!option\_parse\_to@{option\_parse\_to}}
+\index{option\_parse\_to@{option\_parse\_to}!option.h@{option.h}}
+\doxysubsubsection{\texorpdfstring{option\_parse\_to()}{option\_parse\_to()}}
+{\footnotesize\ttfamily void option\+\_\+parse\+\_\+to (\begin{DoxyParamCaption}\item[{execoption \&}]{options,  }\item[{int}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{arg }\end{DoxyParamCaption})}
+
+
+
+Insère ou modifie les options d\textquotesingle{}exécution dans une/d\textquotesingle{}une table {\ttfamily execoption}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em options} & La table {\ttfamily execoption} à modifier. \\
+\hline
+{\em argc} & Le nombre d\textquotesingle{}arguments lors de l\textquotesingle{}exécution du programme. \\
+\hline
+{\em arg} & La liste des arguments. \\
+\hline
+\end{DoxyParams}

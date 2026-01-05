@@ -1,8 +1,9 @@
 /**
- *  @date : 25 décembre 2025
- *  @author : Audren Metery-Drouin
- *  @Brief : Les fonctions utilisées pour éliminer les bonbons et cases et appliquer la gravité
-**/
+ * @file updateEtat.cpp
+ * @brief Les fonctions utilisées pour éliminer les bonbons et cases et appliquer la gravité
+ * @date 25 décembre 2025
+ * @author Audren Metery-Drouin
+ */
 
 #include <updateEtat.h>
 
@@ -120,7 +121,7 @@ void removalInRow(mat & Grid, EtatMat & EtatGrid, maPosition pos, unsigned howMa
 }
 
 //------------------------------ Fonctions pour faire tomber les bonbons
-bool graviter(mat & Grid, EtatMat & EtatGrid, enum gravType gravDirection) {
+bool graviter(mat & Grid, enum gravType gravDirection) {
     bool change = false;
 
     if (gravDirection == UP || gravDirection == LEFT) {

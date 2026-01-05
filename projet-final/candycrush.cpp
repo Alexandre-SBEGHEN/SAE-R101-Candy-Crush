@@ -8,6 +8,7 @@
 #include <ctime>
 #include <thread>
 #include <chrono>
+#include <map>
 
 #include <candycrush.h>
 #include <inGameDisplay.h>
@@ -18,7 +19,7 @@ using namespace std;
 
 
 
-size_t candycrush_play(const gametexts & texts, const size_t & movingway, const bool & fancydisplay) {
+size_t candycrush_play(gametexts texts, const size_t & movingway, const bool & fancydisplay) {
 
     srand(time(0));
 
@@ -48,43 +49,43 @@ size_t candycrush_play(const gametexts & texts, const size_t & movingway, const 
 
         // On affiche la grille
         StatusDuJeu = IDLE;
-        displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
+        displayGrid(texts, Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
 
 
         // Code de Nicolas pour gérer les entrées d'utilisateurs
         swapResult res;
 
-        if (movingway == 1) {
+        if (movingway == 0) {
             unsigned line, column;
             char dir;
 
             // Ordonnée
             StatusDuJeu = ORD;
-            displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
+            displayGrid(texts, Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
 
-            cout << "Ligne : ";
+            cout << texts["ingame__play__chooseline"] << ' ';
             cin >> line;
             PositionActuelle.ord = line-1;
 
             // Abscisse
             StatusDuJeu = ABS;
-            displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
+            displayGrid(texts, Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
 
-            cout << "Colonne : ";
+            cout << texts["ingame__play__choosecolumn"] << ' ';
             cin >> column;
             PositionActuelle.abs = column-1;
 
             // Mouvement
             StatusDuJeu = MOUVEMENT;
-            displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
+            displayGrid(texts, Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
 
-            cout << "Direction (ZQSD) : ";
+            cout << texts["ingame__play__choosedirection"] << " (ZQSD) : ";
             cin >> dir;
 
             res = moveByCoordinates(Tableau, PositionActuelle.abs, PositionActuelle.ord, dir);
         }
         else if (movingway == 1) {   //Pour deplacement par "curseur"
-            res = moveByCursor(Tableau, TableauEtat, Details, score, coupsRestant);
+            res = moveByCursor(texts, Tableau, TableauEtat, Details, score, coupsRestant);
         }
         else { // Si l'utilisateur rentre un mauvais mode, on stop
             cout << "Gros Boulet"<<endl;
@@ -102,11 +103,11 @@ size_t candycrush_play(const gametexts & texts, const size_t & movingway, const 
             // DEBUG
             /*
             StatusDuJeu = MOUVEMENT;
-            displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
+            displayGrid(texts, Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
             cout << "Voici la position 1" << endl;
             this_thread::sleep_for(chrono::milliseconds(2000));
 
-            displayGrid(Tableau, TableauEtat, StatusDuJeu, AutrePosition, Details, score, coupsRestant);
+            displayGrid(texts, Tableau, TableauEtat, StatusDuJeu, AutrePosition, Details, score, coupsRestant);
             cout << "Voici la position 2" << endl;
             this_thread::sleep_for(chrono::milliseconds(2000));
 
@@ -156,15 +157,15 @@ size_t candycrush_play(const gametexts & texts, const size_t & movingway, const 
             // Animation (Position 1)
             if (columnFound || rowFound) {
                 // Old table
-                displayGrid(AncienTableau, AncienTableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
+                displayGrid(texts, AncienTableau, AncienTableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
                 this_thread::sleep_for(chrono::milliseconds(500));
                 for (unsigned i=0; i<2; i++) {
                     // New table
-                    displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
+                    displayGrid(texts, Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
                     // Cooldown
                     this_thread::sleep_for(chrono::milliseconds(500));
                     // Old table
-                    displayGrid(AncienTableau, AncienTableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
+                    displayGrid(texts, AncienTableau, AncienTableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
                     // Cooldown
                     this_thread::sleep_for(chrono::milliseconds(500));
                 }
@@ -203,32 +204,35 @@ size_t candycrush_play(const gametexts & texts, const size_t & movingway, const 
             // Animation (Position 2)
             if (columnFound || rowFound) {
                 // Old table
-                displayGrid(AncienTableau, AncienTableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
+                displayGrid(texts, AncienTableau, AncienTableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
                 this_thread::sleep_for(chrono::milliseconds(500));
                 for (unsigned i=0; i<2; i++) {
                     // New table
-                    displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
+                    displayGrid(texts, Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
                     // Cooldown
                     this_thread::sleep_for(chrono::milliseconds(500));
                     // Old table
-                    displayGrid(AncienTableau, AncienTableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
+                    displayGrid(texts, AncienTableau, AncienTableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
                     // Cooldown
                     this_thread::sleep_for(chrono::milliseconds(500));
                 }
             }
 
             // Display New table
-            displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
+            displayGrid(texts, Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
 
             //-------------------------- On applique la gravité
             bool change = true;
             while (change) {
-                change = graviter(Tableau, TableauEtat, GravDirection);
+                change = graviter(Tableau, GravDirection);
                 if (change) {
                     this_thread::sleep_for(chrono::milliseconds(500));
-                    displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
+                    displayGrid(texts, Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
                 }
             }
+
+            // On réduit le nomdre de coups restant
+            --coupsRestant;
 
             // Debug
             /*
@@ -237,25 +241,27 @@ size_t candycrush_play(const gametexts & texts, const size_t & movingway, const 
             this_thread::sleep_for(chrono::milliseconds(3000));
             */
         } else {
-            cout << "mouvement invalide" << endl;
+            cout << texts["ingame__play__wrongmove"] << endl;
             this_thread::sleep_for(chrono::milliseconds(3000));
-            displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant); //Display grid
+            displayGrid(texts, Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant); //Display grid
         }
 
-        // On réduit le nomdre de coups restant
-        --coupsRestant;
     }
 
     // Plus de coups restants
-    displayGrid(Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
+    displayGrid(texts, Tableau, TableauEtat, StatusDuJeu, PositionActuelle, Details, score, coupsRestant);
     this_thread::sleep_for(chrono::milliseconds(1000));
-    cout << "Vous avez épuisé tout les coups disponibles!" << endl;
+    cout << texts["ingame__result__endalert"] << endl;
     this_thread::sleep_for(chrono::milliseconds(1000));
-    cout << "Votre score final: " << score;
-    this_thread::sleep_for(chrono::milliseconds(2000));
-    cout << " Pas mal!" << endl;
+    cout << texts["ingame__result__finalscore"] << ' ' << score << endl;
+    if (score > 0) {
+        this_thread::sleep_for(chrono::milliseconds(2000));
+        cout << texts["ingame__result__notbad"] << endl;
+    }
     this_thread::sleep_for(chrono::milliseconds(4000));
     
+
+    cin.ignore();
     return score;
 
 }

@@ -1,8 +1,9 @@
 /**
- *  @date : 24 décembre 2025
- *  @author : Audren Metery-Drouin
- *  @Brief : Les fonctions utilisées pour éliminer les bonbons et cases et appliquer la gravité
-**/
+ * @file updateEtat.h
+ * @brief Les fonctions utilisées pour éliminer les bonbons et cases et appliquer la gravité
+ * @date 24 décembre 2025
+ * @author Audren Metery-Drouin
+ */
 
 #include <typeList.h>
 
@@ -59,4 +60,4 @@ void removalInRow(mat & Grid, EtatMat & EtatGrid, maPosition pos, unsigned howMa
  * @param EtatGrid La matrice des états des cases de la grille
  * @param gravDirection La direction de la gravité
  */
-bool graviter(mat & Grid, EtatMat & EtatGrid, enum gravType gravDirection);
+bool graviter(mat & Grid, enum gravType gravDirection);

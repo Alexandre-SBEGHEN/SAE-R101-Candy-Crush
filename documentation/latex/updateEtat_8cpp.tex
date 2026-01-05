@@ -1,0 +1,165 @@
+\doxysection{update\+Etat.\+cpp File Reference}
+\hypertarget{updateEtat_8cpp}{}\label{updateEtat_8cpp}\index{updateEtat.cpp@{updateEtat.cpp}}
+
+
+Les fonctions utilisées pour éliminer les bonbons et cases et appliquer la gravité  
+
+
+{\ttfamily \#include $<$update\+Etat.\+h$>$}\newline
+Include dependency graph for update\+Etat.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=262pt]{updateEtat_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{updateEtat_8cpp_a82189ac530ae1b8355134df93d492ea9}{at\+Least\+Three\+In\+AColumn}} (const mat \&Grid, \mbox{\hyperlink{structmaPosition}{ma\+Position}} \&pos, unsigned \&how\+Many)
+\begin{DoxyCompactList}\small\item\em renvoie le booléen true si 3 bonbons ou plus sont trouvés à la suite dans une colonne \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{updateEtat_8cpp_a9a495367172f2d51461690aaed8978c8}{at\+Least\+Three\+In\+ARow}} (const mat \&Grid, \mbox{\hyperlink{structmaPosition}{ma\+Position}} \&pos, unsigned \&how\+Many)
+\begin{DoxyCompactList}\small\item\em renvoie le booléen true si 3 bonbons ou plus sont trouvés à la suite dans une ligne \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{updateEtat_8cpp_a50c40b01af74856304f42be70ec97400}{removal\+In\+Cell}} (mat \&Grid, Etat\+Mat \&Etat\+Grid, unsigned ord, unsigned abs)
+\begin{DoxyCompactList}\small\item\em enlève le bonbon dans une case de la grille \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{updateEtat_8cpp_a8a990ecaf48390d8438a2c53643f9a2a}{removal\+In\+Column}} (mat \&Grid, Etat\+Mat \&Etat\+Grid, \mbox{\hyperlink{structmaPosition}{ma\+Position}} pos, unsigned how\+Many)
+\begin{DoxyCompactList}\small\item\em enlève la colonne de bonbons trouvé \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{updateEtat_8cpp_aaab4ec45ac23f9bc7e18026f999b193f}{removal\+In\+Row}} (mat \&Grid, Etat\+Mat \&Etat\+Grid, \mbox{\hyperlink{structmaPosition}{ma\+Position}} pos, unsigned how\+Many)
+\begin{DoxyCompactList}\small\item\em enlève la ligne de bonbons trouvé \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{updateEtat_8cpp_af404d49f8de26b55b3bf7e3c15ea7324}{graviter}} (mat \&Grid, enum grav\+Type grav\+Direction)
+\begin{DoxyCompactList}\small\item\em Applique la gravité aux bonbons de la grille pour les faire tomber et renvoie un booléen pour savoir si un bonbon est tomber. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Les fonctions utilisées pour éliminer les bonbons et cases et appliquer la gravité 
+
+\begin{DoxyDate}{Date}
+25 décembre 2025 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Audren Metery-\/\+Drouin 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{updateEtat_8cpp_a82189ac530ae1b8355134df93d492ea9}\label{updateEtat_8cpp_a82189ac530ae1b8355134df93d492ea9} 
+\index{updateEtat.cpp@{updateEtat.cpp}!atLeastThreeInAColumn@{atLeastThreeInAColumn}}
+\index{atLeastThreeInAColumn@{atLeastThreeInAColumn}!updateEtat.cpp@{updateEtat.cpp}}
+\doxysubsubsection{\texorpdfstring{atLeastThreeInAColumn()}{atLeastThreeInAColumn()}}
+{\footnotesize\ttfamily bool at\+Least\+Three\+In\+AColumn (\begin{DoxyParamCaption}\item[{const mat \&}]{Grid,  }\item[{\mbox{\hyperlink{structmaPosition}{ma\+Position}} \&}]{pos,  }\item[{unsigned \&}]{how\+Many }\end{DoxyParamCaption})}
+
+
+
+renvoie le booléen true si 3 bonbons ou plus sont trouvés à la suite dans une colonne 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Grid} & La grille à vérifier \\
+\hline
+{\em pos} & La position qui à été échanger \\
+\hline
+{\em how\+Many} & La valeur retourner donnant la taille de la ligne trouvé \\
+\hline
+\end{DoxyParams}
+\Hypertarget{updateEtat_8cpp_a9a495367172f2d51461690aaed8978c8}\label{updateEtat_8cpp_a9a495367172f2d51461690aaed8978c8} 
+\index{updateEtat.cpp@{updateEtat.cpp}!atLeastThreeInARow@{atLeastThreeInARow}}
+\index{atLeastThreeInARow@{atLeastThreeInARow}!updateEtat.cpp@{updateEtat.cpp}}
+\doxysubsubsection{\texorpdfstring{atLeastThreeInARow()}{atLeastThreeInARow()}}
+{\footnotesize\ttfamily bool at\+Least\+Three\+In\+ARow (\begin{DoxyParamCaption}\item[{const mat \&}]{Grid,  }\item[{\mbox{\hyperlink{structmaPosition}{ma\+Position}} \&}]{pos,  }\item[{unsigned \&}]{how\+Many }\end{DoxyParamCaption})}
+
+
+
+renvoie le booléen true si 3 bonbons ou plus sont trouvés à la suite dans une ligne 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Grid} & La grille à vérifier \\
+\hline
+{\em pos} & La position qui à été échanger \\
+\hline
+{\em how\+Many} & La valeur retourner donnant la taille de la ligne trouvé \\
+\hline
+\end{DoxyParams}
+\Hypertarget{updateEtat_8cpp_af404d49f8de26b55b3bf7e3c15ea7324}\label{updateEtat_8cpp_af404d49f8de26b55b3bf7e3c15ea7324} 
+\index{updateEtat.cpp@{updateEtat.cpp}!graviter@{graviter}}
+\index{graviter@{graviter}!updateEtat.cpp@{updateEtat.cpp}}
+\doxysubsubsection{\texorpdfstring{graviter()}{graviter()}}
+{\footnotesize\ttfamily bool graviter (\begin{DoxyParamCaption}\item[{mat \&}]{Grid,  }\item[{enum grav\+Type}]{grav\+Direction }\end{DoxyParamCaption})}
+
+
+
+Applique la gravité aux bonbons de la grille pour les faire tomber et renvoie un booléen pour savoir si un bonbon est tomber. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Grid} & La grille \\
+\hline
+{\em Etat\+Grid} & La matrice des états des cases de la grille \\
+\hline
+{\em grav\+Direction} & La direction de la gravité \\
+\hline
+\end{DoxyParams}
+\Hypertarget{updateEtat_8cpp_a50c40b01af74856304f42be70ec97400}\label{updateEtat_8cpp_a50c40b01af74856304f42be70ec97400} 
+\index{updateEtat.cpp@{updateEtat.cpp}!removalInCell@{removalInCell}}
+\index{removalInCell@{removalInCell}!updateEtat.cpp@{updateEtat.cpp}}
+\doxysubsubsection{\texorpdfstring{removalInCell()}{removalInCell()}}
+{\footnotesize\ttfamily void removal\+In\+Cell (\begin{DoxyParamCaption}\item[{mat \&}]{Grid,  }\item[{Etat\+Mat \&}]{Etat\+Grid,  }\item[{unsigned}]{ord,  }\item[{unsigned}]{abs }\end{DoxyParamCaption})}
+
+
+
+enlève le bonbon dans une case de la grille 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Grid} & La grille \\
+\hline
+{\em Etat\+Grid} & La matrice des états de la grille \\
+\hline
+{\em ord} & L\textquotesingle{}ordonnée de la case \\
+\hline
+{\em abs} & L\textquotesingle{}abscisse de la case \\
+\hline
+\end{DoxyParams}
+\Hypertarget{updateEtat_8cpp_a8a990ecaf48390d8438a2c53643f9a2a}\label{updateEtat_8cpp_a8a990ecaf48390d8438a2c53643f9a2a} 
+\index{updateEtat.cpp@{updateEtat.cpp}!removalInColumn@{removalInColumn}}
+\index{removalInColumn@{removalInColumn}!updateEtat.cpp@{updateEtat.cpp}}
+\doxysubsubsection{\texorpdfstring{removalInColumn()}{removalInColumn()}}
+{\footnotesize\ttfamily void removal\+In\+Column (\begin{DoxyParamCaption}\item[{mat \&}]{Grid,  }\item[{Etat\+Mat \&}]{Etat\+Grid,  }\item[{\mbox{\hyperlink{structmaPosition}{ma\+Position}}}]{pos,  }\item[{unsigned}]{how\+Many }\end{DoxyParamCaption})}
+
+
+
+enlève la colonne de bonbons trouvé 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Grid} & La grille où la colonne à été trouvé \\
+\hline
+{\em Etat\+Grid} & La matrice des états de la grille \\
+\hline
+{\em pos} & La position où la colonne à été trouvé \\
+\hline
+{\em how\+Many} & La taille de la colonne \\
+\hline
+\end{DoxyParams}
+\Hypertarget{updateEtat_8cpp_aaab4ec45ac23f9bc7e18026f999b193f}\label{updateEtat_8cpp_aaab4ec45ac23f9bc7e18026f999b193f} 
+\index{updateEtat.cpp@{updateEtat.cpp}!removalInRow@{removalInRow}}
+\index{removalInRow@{removalInRow}!updateEtat.cpp@{updateEtat.cpp}}
+\doxysubsubsection{\texorpdfstring{removalInRow()}{removalInRow()}}
+{\footnotesize\ttfamily void removal\+In\+Row (\begin{DoxyParamCaption}\item[{mat \&}]{Grid,  }\item[{Etat\+Mat \&}]{Etat\+Grid,  }\item[{\mbox{\hyperlink{structmaPosition}{ma\+Position}}}]{pos,  }\item[{unsigned}]{how\+Many }\end{DoxyParamCaption})}
+
+
+
+enlève la ligne de bonbons trouvé 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Grid} & La grille où la ligne à été trouvé \\
+\hline
+{\em Etat\+Grid} & La matrice des états de la grille \\
+\hline
+{\em pos} & La position où la ligne à été trouvé \\
+\hline
+{\em how\+Many} & La taille de la ligne \\
+\hline
+\end{DoxyParams}

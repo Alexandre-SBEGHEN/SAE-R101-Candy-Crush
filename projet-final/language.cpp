@@ -3,7 +3,7 @@
  * @brief Script de traductions des textes
  * @author Alexandre SBEGHEN
  * @date 24/12/2025
- * @version 1.6
+ * @version 1.7
  */
 #include <iostream>
 #include <map>
@@ -12,7 +12,7 @@
 #include <file.h>
 using namespace std;
 
-/* Corps de la prédicat `language_get_texts_from_file_to` qui crée la map de tous les textes du jeu à partir d'un fichier */
+/* Corps du prédicat `language_get_texts_from_file_to` qui crée la map de tous les textes du jeu à partir d'un fichier */
 bool language_get_texts_from_file_to(const string & filename, gametexts & texts) {
     if (!file_exists(filename)) return false;
 

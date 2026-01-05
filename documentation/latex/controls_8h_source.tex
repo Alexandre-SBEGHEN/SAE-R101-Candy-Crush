@@ -1,0 +1,26 @@
+\doxysection{controls.\+h}
+\hypertarget{controls_8h_source}{}\label{controls_8h_source}\mbox{\hyperlink{controls_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ CONTROLS\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ CONTROLS\_H}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{typeList_8h}{typeList.h}}>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{language_8h}{language.h}}>}}
+\DoxyCodeLine{00012\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{comment}{//Struct\ de\ validation\ du\ mouvement\ entre\ deux\ positions}}
+\DoxyCodeLine{00015\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structswapResult}{swapResult}}\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{bool}\ ok;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ le\ mouvement\ est\ valide\ ?}}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{structmaPosition}{maPosition}}\ p1;\ \ \ \ \ \ \textcolor{comment}{//\ première\ case}}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{structmaPosition}{maPosition}}\ p2;\ \ \ \ \ \ \textcolor{comment}{//\ deuxième\ case}}
+\DoxyCodeLine{00019\ \};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00029\ \mbox{\hyperlink{structswapResult}{swapResult}}\ \mbox{\hyperlink{controls_8h_a5713cedf717c375529a807c3d8cee560}{moveByCoordinates}}(mat\ \&\ grid,\ \textcolor{keywordtype}{unsigned}\ ligne,\ \textcolor{keywordtype}{unsigned}\ colonne,\ \textcolor{keywordtype}{char}\ direction);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00039\ \mbox{\hyperlink{structswapResult}{swapResult}}\ \mbox{\hyperlink{controls_8h_a98d5e64239c06863da52032a69891388}{moveByCursor}}(gametexts\ texts,\ mat\ \&\ grid,\ EtatMat\ EtatGrid,\ graphisme\ details,\ \textcolor{keywordtype}{size\_t}\ score,\ \textcolor{keywordtype}{int}\ coupsRestant);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{controls_8h_ac695b27d4c9f264c12a9dee1ff2e42cd}{moveIsValid}}(mat\ \&\ grid,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structmaPosition}{maPosition}}\ \&\ pos,\ \textcolor{keywordtype}{char}\ direction);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

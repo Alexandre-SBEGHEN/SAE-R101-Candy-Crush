@@ -1,0 +1,112 @@
+\doxysection{controls.\+h File Reference}
+\hypertarget{controls_8h}{}\label{controls_8h}\index{controls.h@{controls.h}}
+
+
+Fichier header pour la gestion de flux d\textquotesingle{}entrée et de sortie.  
+
+
+{\ttfamily \#include $<$type\+List.\+h$>$}\newline
+{\ttfamily \#include $<$language.\+h$>$}\newline
+Include dependency graph for controls.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=326pt]{controls_8h__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structswapResult}{swap\+Result}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structswapResult}{swap\+Result}} \mbox{\hyperlink{controls_8h_a5713cedf717c375529a807c3d8cee560}{move\+By\+Coordinates}} (mat \&grid, unsigned ligne, unsigned colonne, char direction)
+\begin{DoxyCompactList}\small\item\em Se déplacer selon la méthode 1. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structswapResult}{swap\+Result}} \mbox{\hyperlink{controls_8h_a98d5e64239c06863da52032a69891388}{move\+By\+Cursor}} (gametexts texts, mat \&grid, Etat\+Mat Etat\+Grid, graphisme details, size\+\_\+t score, int coups\+Restant)
+\begin{DoxyCompactList}\small\item\em Se déplacer selon la méthode 2. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{controls_8h_ac695b27d4c9f264c12a9dee1ff2e42cd}{move\+Is\+Valid}} (mat \&grid, const \mbox{\hyperlink{structmaPosition}{ma\+Position}} \&pos, char direction)
+\begin{DoxyCompactList}\small\item\em Vérifie si un mouvement est valide. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Fichier header pour la gestion de flux d\textquotesingle{}entrée et de sortie. 
+
+\begin{DoxyAuthor}{Author}
+Nicolas MOYENIN 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+04/01/2026 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{controls_8h_a5713cedf717c375529a807c3d8cee560}\label{controls_8h_a5713cedf717c375529a807c3d8cee560} 
+\index{controls.h@{controls.h}!moveByCoordinates@{moveByCoordinates}}
+\index{moveByCoordinates@{moveByCoordinates}!controls.h@{controls.h}}
+\doxysubsubsection{\texorpdfstring{moveByCoordinates()}{moveByCoordinates()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structswapResult}{swap\+Result}} move\+By\+Coordinates (\begin{DoxyParamCaption}\item[{mat \&}]{grid,  }\item[{unsigned}]{ligne,  }\item[{unsigned}]{colonne,  }\item[{char}]{direction }\end{DoxyParamCaption})}
+
+
+
+Se déplacer selon la méthode 1. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em grid} & La grille du jeu \\
+\hline
+{\em ligne} & La ligne acuelle \\
+\hline
+{\em colonne} & La colonne actuelle \\
+\hline
+{\em direction} & La direction du mouvement \\
+\hline
+\end{DoxyParams}
+\Hypertarget{controls_8h_a98d5e64239c06863da52032a69891388}\label{controls_8h_a98d5e64239c06863da52032a69891388} 
+\index{controls.h@{controls.h}!moveByCursor@{moveByCursor}}
+\index{moveByCursor@{moveByCursor}!controls.h@{controls.h}}
+\doxysubsubsection{\texorpdfstring{moveByCursor()}{moveByCursor()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structswapResult}{swap\+Result}} move\+By\+Cursor (\begin{DoxyParamCaption}\item[{gametexts}]{texts,  }\item[{mat \&}]{grid,  }\item[{Etat\+Mat}]{Etat\+Grid,  }\item[{graphisme}]{details,  }\item[{size\+\_\+t}]{score,  }\item[{int}]{coups\+Restant }\end{DoxyParamCaption})}
+
+
+
+Se déplacer selon la méthode 2. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em grid} & La grille du jeu \\
+\hline
+{\em Etat\+Grid} & La matrice des états de la grille du jeu \\
+\hline
+{\em details} & Le niveau de graphisme \\
+\hline
+{\em score} & Le score actuel du joueur \\
+\hline
+\end{DoxyParams}
+\Hypertarget{controls_8h_ac695b27d4c9f264c12a9dee1ff2e42cd}\label{controls_8h_ac695b27d4c9f264c12a9dee1ff2e42cd} 
+\index{controls.h@{controls.h}!moveIsValid@{moveIsValid}}
+\index{moveIsValid@{moveIsValid}!controls.h@{controls.h}}
+\doxysubsubsection{\texorpdfstring{moveIsValid()}{moveIsValid()}}
+{\footnotesize\ttfamily bool move\+Is\+Valid (\begin{DoxyParamCaption}\item[{mat \&}]{grid,  }\item[{const \mbox{\hyperlink{structmaPosition}{ma\+Position}} \&}]{pos,  }\item[{char}]{direction }\end{DoxyParamCaption})}
+
+
+
+Vérifie si un mouvement est valide. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em grid} & La grille du jeu \\
+\hline
+{\em pos} & Position actuelle \\
+\hline
+{\em direction} & La direction du mouvement \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Si le mouvement est valide 
+\end{DoxyReturn}
