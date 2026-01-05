@@ -1,0 +1,11 @@
+<map id="file.h" name="file.h">
+<area shape="rect" id="Node000001" title="Fichier header pour la gestion de flux d&#39;entrée et de sortie." alt="" coords="201,5,255,31"/>
+<area shape="rect" id="Node000002" href="$file_8cpp.html" title="Script de gestion de flux d&#39;entrée et de sortie." alt="" coords="5,79,75,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="189,37,71,81,70,76,187,32"/>
+<area shape="rect" id="Node000003" href="$highscores_8cpp.html" title="Script pour le fonctionnement de la table des high scores." alt="" coords="99,79,218,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="209,43,172,80,168,77,205,39"/>
+<area shape="rect" id="Node000004" href="$language_8cpp.html" title="Script de traductions des textes." alt="" coords="243,79,352,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="251,39,288,77,284,80,247,43"/>
+<area shape="rect" id="Node000005" href="$main_8cpp.html" title="Script principal du jeu." alt="" coords="376,79,459,104"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="269,32,388,76,386,81,267,37"/>
+</map>

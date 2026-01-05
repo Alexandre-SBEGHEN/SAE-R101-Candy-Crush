@@ -1,0 +1,109 @@
+\doxysection{main.\+cpp File Reference}
+\hypertarget{main_8cpp}{}\label{main_8cpp}\index{main.cpp@{main.cpp}}
+
+
+Script principal du jeu.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$type\+List.\+h$>$}\newline
+{\ttfamily \#include $<$file.\+h$>$}\newline
+{\ttfamily \#include $<$language.\+h$>$}\newline
+{\ttfamily \#include $<$highscores.\+h$>$}\newline
+{\ttfamily \#include $<$option.\+h$>$}\newline
+{\ttfamily \#include $<$candycrush.\+h$>$}\newline
+Include dependency graph for main.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structGameMenuButton}{Game\+Menu\+Button}}
+\item 
+struct \mbox{\hyperlink{structingameSettings}{ingame\+Settings}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{main_8cpp_a3146f33822c2f80d22278f14066000f5}\label{main_8cpp_a3146f33822c2f80d22278f14066000f5} 
+\#define {\bfseries underline\+\_\+txt}(text)~"{}\textbackslash{}033\mbox{[}4m"{} + text + "{}\textbackslash{}033\mbox{[}0m"{}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{main_8cpp_af37394cd50df7a77e0eff1df07f87fae}\label{main_8cpp_af37394cd50df7a77e0eff1df07f87fae} 
+enum {\bfseries Game\+Menu\+Button\+Action} \{ \newline
+{\bfseries FORWARD}
+, {\bfseries BACKWARD}
+, {\bfseries ACTION}
+, {\bfseries ACTION\+\_\+\+PLAY}
+, \newline
+{\bfseries ACTION\+\_\+\+HIGHSC\+\_\+\+SHOW}
+, {\bfseries ACTION\+\_\+\+HIGHSC\+\_\+\+SAVE}
+, {\bfseries ACTION\+\_\+\+HIGHSC\+\_\+\+LOAD}
+, {\bfseries ACTION\+\_\+\+PARAM\+\_\+\+LANG\+\_\+\+FR}
+, \newline
+{\bfseries ACTION\+\_\+\+PARAM\+\_\+\+LANG\+\_\+\+EN}
+, {\bfseries ACTION\+\_\+\+PARAM\+\_\+\+LANG\+\_\+\+CUSTOM}
+, {\bfseries ACTION\+\_\+\+PARAM\+\_\+\+MOV\+\_\+\+ABS}
+, {\bfseries ACTION\+\_\+\+PARAM\+\_\+\+MOV\+\_\+\+REL}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{main_8cpp_a11a07ebc31154d086196fa4df40b4f65}\label{main_8cpp_a11a07ebc31154d086196fa4df40b4f65} 
+\mbox{\hyperlink{structGameMenuButton}{Game\+Menu\+Button}} \texorpdfstring{$\ast$}{*} {\bfseries Game\+Menu\+Button\+\_\+create} (string \texorpdfstring{$\ast$}{*}name, const Game\+Menu\+Button\+Action \&action, \mbox{\hyperlink{structGameMenuButton}{Game\+Menu\+Button}} \texorpdfstring{$\ast$}{*}parent=nullptr)
+\item 
+\Hypertarget{main_8cpp_a22ebaf74d5c7bacab58b44ae963c85d6}\label{main_8cpp_a22ebaf74d5c7bacab58b44ae963c85d6} 
+int {\bfseries main} (int argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}arg)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{main_8cpp_a200c08be81f7f9535ff4b17aabc8ee4a}\label{main_8cpp_a200c08be81f7f9535ff4b17aabc8ee4a} 
+gametexts {\bfseries language\+Texts}
+\item 
+\Hypertarget{main_8cpp_a0edadeee62e086fefb82daa90e9842a9}\label{main_8cpp_a0edadeee62e086fefb82daa90e9842a9} 
+highsc\+\_\+table {\bfseries high\+Scores}
+\item 
+execoption \mbox{\hyperlink{main_8cpp_a07af6556b971b87973e3f29c00e36817}{start\+Options}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Script principal du jeu. 
+
+\begin{DoxyAuthor}{Author}
+Alexandre SBEGHEN 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+24/12/2025 
+\end{DoxyDate}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{main_8cpp_a07af6556b971b87973e3f29c00e36817}\label{main_8cpp_a07af6556b971b87973e3f29c00e36817} 
+\index{main.cpp@{main.cpp}!startOptions@{startOptions}}
+\index{startOptions@{startOptions}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{startOptions}{startOptions}}
+{\footnotesize\ttfamily execoption start\+Options}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ \{\textcolor{stringliteral}{"{}-\/lang"{}},\ \textcolor{stringliteral}{"{}../../lang/en.lang"{}}\},}
+\DoxyCodeLine{\ \ \ \ \{\textcolor{stringliteral}{"{}-\/highsc"{}},\ \textcolor{stringliteral}{"{}none"{}}\},}
+\DoxyCodeLine{\ \ \ \ \{\textcolor{stringliteral}{"{}-\/fancydisplay"{}},\ \textcolor{stringliteral}{"{}false"{}}\},}
+\DoxyCodeLine{\ \ \ \ \{\textcolor{stringliteral}{"{}-\/movingway"{}},\ \textcolor{stringliteral}{"{}0"{}}\}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}

@@ -1,0 +1,124 @@
+\doxysection{file.\+h File Reference}
+\hypertarget{file_8h}{}\label{file_8h}\index{file.h@{file.h}}
+
+
+Fichier header pour la gestion de flux d\textquotesingle{}entrée et de sortie.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+Include dependency graph for file.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{file_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{file_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{file_8h_a0e6e880e6415f7afb63e570ca2de174a}{file\+\_\+readline}} (ifstream \&file)
+\begin{DoxyCompactList}\small\item\em Lit une ligne issue d\textquotesingle{}un fichier en ignorant les lignes commentées ({\ttfamily //}) \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{file_8h_aa91207d77abdeef0221882494a93110e}{file\+\_\+line\+\_\+to\+\_\+key}} (const string \&line)
+\begin{DoxyCompactList}\small\item\em Prend en entrée une ligne qui contient la clé de la map et sa valeurs séparés par minimum DEUX espaces, et renvoie la string de la clé. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{file_8h_a837da13707e056d91daac98110ca51fd}{file\+\_\+line\+\_\+to\+\_\+val}} (const string \&line)
+\begin{DoxyCompactList}\small\item\em Prend en entrée une ligne qui contient la clé de la map et sa valeurs séparés par minimum DEUX espaces, et renvoie la string de la valeur. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{file_8h_acef2ffb52dc5db663f3190cfb87c008f}{file\+\_\+exists}} (const string \&filename)
+\begin{DoxyCompactList}\small\item\em Vérifie si un fichier existe ou non. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Fichier header pour la gestion de flux d\textquotesingle{}entrée et de sortie. 
+
+\begin{DoxyAuthor}{Author}
+Alexandre SBEGHEN 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+26/12/2025 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{file_8h_acef2ffb52dc5db663f3190cfb87c008f}\label{file_8h_acef2ffb52dc5db663f3190cfb87c008f} 
+\index{file.h@{file.h}!file\_exists@{file\_exists}}
+\index{file\_exists@{file\_exists}!file.h@{file.h}}
+\doxysubsubsection{\texorpdfstring{file\_exists()}{file\_exists()}}
+{\footnotesize\ttfamily bool file\+\_\+exists (\begin{DoxyParamCaption}\item[{const string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Vérifie si un fichier existe ou non. 
+
+Important \+: sur Linux, les dossiers sont eux-\/mêmes des fichiers, donc mettre le chemin vers un dossier existant renverra {\ttfamily vrai}
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Le chemin (relatif ou absolu) du fichier à vérifier \\
+\hline
+\end{DoxyParams}
+\Hypertarget{file_8h_aa91207d77abdeef0221882494a93110e}\label{file_8h_aa91207d77abdeef0221882494a93110e} 
+\index{file.h@{file.h}!file\_line\_to\_key@{file\_line\_to\_key}}
+\index{file\_line\_to\_key@{file\_line\_to\_key}!file.h@{file.h}}
+\doxysubsubsection{\texorpdfstring{file\_line\_to\_key()}{file\_line\_to\_key()}}
+{\footnotesize\ttfamily string file\+\_\+line\+\_\+to\+\_\+key (\begin{DoxyParamCaption}\item[{const string \&}]{line }\end{DoxyParamCaption})}
+
+
+
+Prend en entrée une ligne qui contient la clé de la map et sa valeurs séparés par minimum DEUX espaces, et renvoie la string de la clé. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em line} & La string de la ligne qui contient le couple clé/valeur. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La clé sous forme de string. 
+\end{DoxyReturn}
+\Hypertarget{file_8h_a837da13707e056d91daac98110ca51fd}\label{file_8h_a837da13707e056d91daac98110ca51fd} 
+\index{file.h@{file.h}!file\_line\_to\_val@{file\_line\_to\_val}}
+\index{file\_line\_to\_val@{file\_line\_to\_val}!file.h@{file.h}}
+\doxysubsubsection{\texorpdfstring{file\_line\_to\_val()}{file\_line\_to\_val()}}
+{\footnotesize\ttfamily string file\+\_\+line\+\_\+to\+\_\+val (\begin{DoxyParamCaption}\item[{const string \&}]{line }\end{DoxyParamCaption})}
+
+
+
+Prend en entrée une ligne qui contient la clé de la map et sa valeurs séparés par minimum DEUX espaces, et renvoie la string de la valeur. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em line} & La string de la ligne qui contient le couple clé/valeur. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La valeur sous forme de string. 
+\end{DoxyReturn}
+\Hypertarget{file_8h_a0e6e880e6415f7afb63e570ca2de174a}\label{file_8h_a0e6e880e6415f7afb63e570ca2de174a} 
+\index{file.h@{file.h}!file\_readline@{file\_readline}}
+\index{file\_readline@{file\_readline}!file.h@{file.h}}
+\doxysubsubsection{\texorpdfstring{file\_readline()}{file\_readline()}}
+{\footnotesize\ttfamily string file\+\_\+readline (\begin{DoxyParamCaption}\item[{ifstream \&}]{file }\end{DoxyParamCaption})}
+
+
+
+Lit une ligne issue d\textquotesingle{}un fichier en ignorant les lignes commentées ({\ttfamily //}) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & Le fichier de type {\ttfamily ifstream} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La ligne lue sous forme de string 
+\end{DoxyReturn}

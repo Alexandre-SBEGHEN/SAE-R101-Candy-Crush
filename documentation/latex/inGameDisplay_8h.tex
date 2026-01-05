@@ -1,0 +1,159 @@
+\doxysection{in\+Game\+Display.\+h File Reference}
+\hypertarget{inGameDisplay_8h}{}\label{inGameDisplay_8h}\index{inGameDisplay.h@{inGameDisplay.h}}
+
+
+Les fonctions utilisées pour afficher la grille.  
+
+
+{\ttfamily \#include $<$type\+List.\+h$>$}\newline
+{\ttfamily \#include $<$language.\+h$>$}\newline
+Include dependency graph for in\+Game\+Display.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=326pt]{inGameDisplay_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{inGameDisplay_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{inGameDisplay_8h_ae241cf89d39423f89bb8e65688e4c031}{couleur}} (const unsigned \&coul)
+\begin{DoxyCompactList}\small\item\em Met en couleur le terminal selon la valeur choisis. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{inGameDisplay_8h_a722708ccec3c0e3bd50f236d903ec4a2}{couleur\+Bonbon}} (unsigned Bonbon)
+\begin{DoxyCompactList}\small\item\em couleur\+Bonbon \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{inGameDisplay_8h_a9f74dcfba9b50ec575264fbeb577fb02}{couleur\+Case}} (enum Status\+Case status)
+\begin{DoxyCompactList}\small\item\em couleur\+Case \end{DoxyCompactList}\item 
+\Hypertarget{inGameDisplay_8h_a9d7e8af417b6d543da691e9c0e2f6f9f}\label{inGameDisplay_8h_a9d7e8af417b6d543da691e9c0e2f6f9f} 
+void {\bfseries clear\+Screen} ()
+\begin{DoxyCompactList}\small\item\em Efface tout l\textquotesingle{}écran. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{inGameDisplay_8h_ab6148fb844aaa6cb72196b61c762256c}{display\+Grid}} (gametexts texts, mat Tableau, Etat\+Mat Tableau\+Etat, enum Status\+Game Status, \mbox{\hyperlink{structmaPosition}{ma\+Position}} Current\+Pos, enum graphisme Details, size\+\_\+t score, int coups\+Restant)
+\begin{DoxyCompactList}\small\item\em Affiche la grille. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{inGameDisplay_8h_a57cbbd894de9fd264cb34ea4b281bc20}{init\+Grid}} (mat \&Tableau, unsigned Taille)
+\begin{DoxyCompactList}\small\item\em Initialisation des valeurs de la grille. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{inGameDisplay_8h_a2d1cc701fc92d3060007c9eb75877126}{init\+Etat\+Grid}} (Etat\+Mat \&Tableau\+Etat, unsigned Taille)
+\begin{DoxyCompactList}\small\item\em Initialisation des états des cases de la grille. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Les fonctions utilisées pour afficher la grille. 
+
+\begin{DoxyDate}{Date}
+26 décembre 2025 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Audren Metery-\/\+Drouin 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{inGameDisplay_8h_ae241cf89d39423f89bb8e65688e4c031}\label{inGameDisplay_8h_ae241cf89d39423f89bb8e65688e4c031} 
+\index{inGameDisplay.h@{inGameDisplay.h}!couleur@{couleur}}
+\index{couleur@{couleur}!inGameDisplay.h@{inGameDisplay.h}}
+\doxysubsubsection{\texorpdfstring{couleur()}{couleur()}}
+{\footnotesize\ttfamily void couleur (\begin{DoxyParamCaption}\item[{const unsigned \&}]{coul }\end{DoxyParamCaption})}
+
+
+
+Met en couleur le terminal selon la valeur choisis. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coul} & La valeur de la couleur choisis \\
+\hline
+\end{DoxyParams}
+\Hypertarget{inGameDisplay_8h_a722708ccec3c0e3bd50f236d903ec4a2}\label{inGameDisplay_8h_a722708ccec3c0e3bd50f236d903ec4a2} 
+\index{inGameDisplay.h@{inGameDisplay.h}!couleurBonbon@{couleurBonbon}}
+\index{couleurBonbon@{couleurBonbon}!inGameDisplay.h@{inGameDisplay.h}}
+\doxysubsubsection{\texorpdfstring{couleurBonbon()}{couleurBonbon()}}
+{\footnotesize\ttfamily void couleur\+Bonbon (\begin{DoxyParamCaption}\item[{unsigned}]{Bonbon }\end{DoxyParamCaption})}
+
+
+
+couleur\+Bonbon 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Met} & la bonne couleur dans le terminal selon le bonbon actuelle \\
+\hline
+\end{DoxyParams}
+\Hypertarget{inGameDisplay_8h_a9f74dcfba9b50ec575264fbeb577fb02}\label{inGameDisplay_8h_a9f74dcfba9b50ec575264fbeb577fb02} 
+\index{inGameDisplay.h@{inGameDisplay.h}!couleurCase@{couleurCase}}
+\index{couleurCase@{couleurCase}!inGameDisplay.h@{inGameDisplay.h}}
+\doxysubsubsection{\texorpdfstring{couleurCase()}{couleurCase()}}
+{\footnotesize\ttfamily void couleur\+Case (\begin{DoxyParamCaption}\item[{enum Status\+Case}]{status }\end{DoxyParamCaption})}
+
+
+
+couleur\+Case 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Met} & la bonne couleur dans le terminal selon l\textquotesingle{}état de la case actuelle de la grille \\
+\hline
+\end{DoxyParams}
+\Hypertarget{inGameDisplay_8h_ab6148fb844aaa6cb72196b61c762256c}\label{inGameDisplay_8h_ab6148fb844aaa6cb72196b61c762256c} 
+\index{inGameDisplay.h@{inGameDisplay.h}!displayGrid@{displayGrid}}
+\index{displayGrid@{displayGrid}!inGameDisplay.h@{inGameDisplay.h}}
+\doxysubsubsection{\texorpdfstring{displayGrid()}{displayGrid()}}
+{\footnotesize\ttfamily void display\+Grid (\begin{DoxyParamCaption}\item[{gametexts}]{texts,  }\item[{mat}]{Tableau,  }\item[{Etat\+Mat}]{Tableau\+Etat,  }\item[{enum Status\+Game}]{Status,  }\item[{\mbox{\hyperlink{structmaPosition}{ma\+Position}}}]{Current\+Pos,  }\item[{enum graphisme}]{Details,  }\item[{size\+\_\+t}]{score,  }\item[{int}]{coups\+Restant }\end{DoxyParamCaption})}
+
+
+
+Affiche la grille. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Tableau} & Le contenu de la grille \\
+\hline
+{\em Tableau\+Etat} & Les états des cases de la grille \\
+\hline
+{\em Status} & Ce que le joueur est actuellement en train de faire \\
+\hline
+{\em Current\+Pos} & La position actuelle sélectionner \\
+\hline
+{\em coups\+Restant} & Le nombre de coups restants au joueur \\
+\hline
+\end{DoxyParams}
+\Hypertarget{inGameDisplay_8h_a2d1cc701fc92d3060007c9eb75877126}\label{inGameDisplay_8h_a2d1cc701fc92d3060007c9eb75877126} 
+\index{inGameDisplay.h@{inGameDisplay.h}!initEtatGrid@{initEtatGrid}}
+\index{initEtatGrid@{initEtatGrid}!inGameDisplay.h@{inGameDisplay.h}}
+\doxysubsubsection{\texorpdfstring{initEtatGrid()}{initEtatGrid()}}
+{\footnotesize\ttfamily void init\+Etat\+Grid (\begin{DoxyParamCaption}\item[{Etat\+Mat \&}]{Tableau\+Etat,  }\item[{unsigned}]{Taille }\end{DoxyParamCaption})}
+
+
+
+Initialisation des états des cases de la grille. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Tableau\+Etat} & La grille des états à initialiser \\
+\hline
+{\em Taille} & Taille de la grille \\
+\hline
+\end{DoxyParams}
+\Hypertarget{inGameDisplay_8h_a57cbbd894de9fd264cb34ea4b281bc20}\label{inGameDisplay_8h_a57cbbd894de9fd264cb34ea4b281bc20} 
+\index{inGameDisplay.h@{inGameDisplay.h}!initGrid@{initGrid}}
+\index{initGrid@{initGrid}!inGameDisplay.h@{inGameDisplay.h}}
+\doxysubsubsection{\texorpdfstring{initGrid()}{initGrid()}}
+{\footnotesize\ttfamily void init\+Grid (\begin{DoxyParamCaption}\item[{mat \&}]{Tableau,  }\item[{unsigned}]{Taille }\end{DoxyParamCaption})}
+
+
+
+Initialisation des valeurs de la grille. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Tableau} & La Grille à initialiser \\
+\hline
+{\em Taille} & Taille de la grille \\
+\hline
+\end{DoxyParams}

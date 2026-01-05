@@ -1,0 +1,18 @@
+<map id="inGameDisplay.h" name="inGameDisplay.h">
+<area shape="rect" id="Node000001" title="Les fonctions utilisées pour afficher la grille." alt="" coords="67,5,199,31"/>
+<area shape="rect" id="Node000002" href="$typeList_8h.html" title="Les types ou struct custom utilisés par les autres scripts." alt="" coords="47,152,133,177"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="132,32,100,139,95,138,127,30"/>
+<area shape="rect" id="Node000006" href="$language_8h.html" title="Fichier header de traductions des textes." alt="" coords="128,79,223,104"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="142,30,164,66,159,68,137,32"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="93,225,173,251"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="99,176,121,212,117,215,95,179"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,225,68,251"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="83,179,56,216,51,213,79,176"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="197,225,247,251"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="112,175,190,216,187,221,110,180"/>
+<area shape="poly" id="edge9_Node000006_Node000002" title=" " alt="" coords="163,106,116,145,113,141,160,102"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="174,105,143,213,137,211,169,104"/>
+<area shape="poly" id="edge7_Node000006_Node000005" title=" " alt="" coords="182,104,217,211,211,213,177,105"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="260,152,333,177"/>
+<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="196,102,267,143,264,147,193,106"/>
+</map>

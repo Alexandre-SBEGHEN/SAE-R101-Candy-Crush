@@ -1,0 +1,62 @@
+\doxysection{type\+List.\+h}
+\hypertarget{typeList_8h_source}{}\label{typeList_8h_source}\mbox{\hyperlink{typeList_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00011\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#ifndef\ TYPE\_LIST\ }\textcolor{comment}{//\ Pour\ éviter\ de\ définir\ plusieurs\ fois\ les\ types\ dans\ le\ main.cpp}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ TYPE\_LIST}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ KImpossible\ =\ 0;}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ On\ définis\ les\ types\ custom}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ Enum\ des\ status\ possible\ du\ jeu}}
+\DoxyCodeLine{00020\ \textcolor{keyword}{enum}\ StatusGame\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ IDLE,\ \textcolor{comment}{//\ Rien}}
+\DoxyCodeLine{00022\ \ \ \ \ ORD,\ \textcolor{comment}{//\ Lorsque\ le\ joueur\ est\ entrain\ de\ choisir\ l'ordonnee\ de\ la\ case}}
+\DoxyCodeLine{00023\ \ \ \ \ ABS,\ \textcolor{comment}{//\ Lorsque\ le\ joueur\ est\ entrain\ de\ choisir\ l'abscisse\ de\ la\ case}}
+\DoxyCodeLine{00024\ \ \ \ \ MOUVEMENT,\ \textcolor{comment}{//\ Lorsque\ le\ joueur\ est\ entrain\ de\ choisir\ le\ mouvement\ à\ réaliser}}
+\DoxyCodeLine{00025\ \};}
+\DoxyCodeLine{00026\ \textcolor{comment}{//\ Matrice\ des\ valeurs\ des\ cases\ de\ la\ grille}}
+\DoxyCodeLine{00027\ \textcolor{keyword}{typedef}\ vector\ <unsigned>\ line;}
+\DoxyCodeLine{00028\ \textcolor{keyword}{typedef}\ vector\ <line>\ mat;}
+\DoxyCodeLine{00029\ \textcolor{comment}{//\ Type\ position\ custom}}
+\DoxyCodeLine{00030\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structmaPosition}{maPosition}}\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ abs;}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ ord;}
+\DoxyCodeLine{00033\ \};}
+\DoxyCodeLine{00034\ \textcolor{comment}{//\ Enum\ des\ états\ des\ cases\ de\ la\ grille}}
+\DoxyCodeLine{00035\ \textcolor{keyword}{enum}\ StatusCase\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ NORMAL,}
+\DoxyCodeLine{00037\ \ \ \ \ GLACE,}
+\DoxyCodeLine{00038\ \ \ \ \ GLACE\_FAIBLE,}
+\DoxyCodeLine{00039\ \};}
+\DoxyCodeLine{00040\ \textcolor{comment}{//\ Matrice\ des\ états\ des\ cases\ de\ la\ grille}}
+\DoxyCodeLine{00041\ \textcolor{keyword}{typedef}\ vector\ <enum\ StatusCase>\ Etatline;}
+\DoxyCodeLine{00042\ \textcolor{keyword}{typedef}\ vector\ <Etatline>\ EtatMat;}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{comment}{//\ Enum\ des\ niveaux\ de\ graphismes}}
+\DoxyCodeLine{00045\ \textcolor{keyword}{enum}\ graphisme\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ LOW,\ \textcolor{comment}{//\ Sous\ forme\ de\ chiffres}}
+\DoxyCodeLine{00047\ \ \ \ \ HIGH,\ \textcolor{comment}{//\ Sous\ forme\ d'émojis}}
+\DoxyCodeLine{00048\ \};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{comment}{//\ Enum\ des\ différentes\ gravités\ possibles}}
+\DoxyCodeLine{00051\ \textcolor{keyword}{enum}\ gravType\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ UP,}
+\DoxyCodeLine{00053\ \ \ \ \ DOWN,}
+\DoxyCodeLine{00054\ \ \ \ \ LEFT,}
+\DoxyCodeLine{00055\ \ \ \ \ RIGHT,}
+\DoxyCodeLine{00056\ \};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{comment}{//Créer\ le\ type\ de\ donnée\ \`{}gametexts`\ -\/>\ la\ table\ des\ textes\ du\ jeu}}
+\DoxyCodeLine{00059\ \textcolor{keyword}{using\ }gametexts\ =\ map<string,\ string>;}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

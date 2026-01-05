@@ -1,0 +1,62 @@
+\doxysection{language.\+cpp File Reference}
+\hypertarget{language_8cpp}{}\label{language_8cpp}\index{language.cpp@{language.cpp}}
+
+
+Script de traductions des textes.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$language.\+h$>$}\newline
+{\ttfamily \#include $<$file.\+h$>$}\newline
+Include dependency graph for language.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{language_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{language_8cpp_aac1b9810af992d3c1997bf7cbb76541b}{language\+\_\+get\+\_\+texts\+\_\+from\+\_\+file\+\_\+to}} (const string \&filename, gametexts \&texts)
+\begin{DoxyCompactList}\small\item\em Charge les textes issus d\textquotesingle{}un fichier dans une map {\ttfamily gametexts}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Script de traductions des textes. 
+
+\begin{DoxyAuthor}{Author}
+Alexandre SBEGHEN 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+24/12/2025 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+7 
+\end{DoxyVersion}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{language_8cpp_aac1b9810af992d3c1997bf7cbb76541b}\label{language_8cpp_aac1b9810af992d3c1997bf7cbb76541b} 
+\index{language.cpp@{language.cpp}!language\_get\_texts\_from\_file\_to@{language\_get\_texts\_from\_file\_to}}
+\index{language\_get\_texts\_from\_file\_to@{language\_get\_texts\_from\_file\_to}!language.cpp@{language.cpp}}
+\doxysubsubsection{\texorpdfstring{language\_get\_texts\_from\_file\_to()}{language\_get\_texts\_from\_file\_to()}}
+{\footnotesize\ttfamily bool language\+\_\+get\+\_\+texts\+\_\+from\+\_\+file\+\_\+to (\begin{DoxyParamCaption}\item[{const string \&}]{filename,  }\item[{gametexts \&}]{texts }\end{DoxyParamCaption})}
+
+
+
+Charge les textes issus d\textquotesingle{}un fichier dans une map {\ttfamily gametexts}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Le nom du fichier sous forme de {\ttfamily string}. \\
+\hline
+{\em texts} & La map vers laquelle les données sont enregistrées. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Si le fichier a bien été chargé 
+\end{DoxyReturn}

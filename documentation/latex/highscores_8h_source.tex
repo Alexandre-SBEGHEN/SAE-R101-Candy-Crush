@@ -1,0 +1,32 @@
+\doxysection{highscores.\+h}
+\hypertarget{highscores_8h_source}{}\label{highscores_8h_source}\mbox{\hyperlink{highscores_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ HIGHSCORES\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ HIGHSCORES\_H}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00013\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{comment}{//Création\ des\ constantes}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ HIGHSC\_MAX\_PLAYERS\ 10\ }\textcolor{comment}{//Nombre\ max\ de\ joueurs\ à\ inclure\ dans\ les\ highscores}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ HIGHSC\_FILENAME\ "{}highscores.hs"{}\ }\textcolor{comment}{//Nom\ du\ fichier\ dans\ lequel\ stocker\ et\ charger\ les\ high\ scores}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{comment}{//Création\ des\ alias}}
+\DoxyCodeLine{00020\ \textcolor{keyword}{using\ }highsc\_entry\ =\ pair<string,\ size\_t>;\ \textcolor{comment}{//Une\ paire\ \`{}(nom,\ score)`}}
+\DoxyCodeLine{00021\ \textcolor{keyword}{using\ }highsc\_table\ =\ vector<highsc\_entry>;\ \textcolor{comment}{//Une\ table\ de\ high\ scores}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00032\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{highscores_8h_a902ab2328a72db6c13f8a05e1cdc9baa}{highscores\_sort\_condition}}(\textcolor{keyword}{const}\ highsc\_entry\ \&\ a,\ \textcolor{keyword}{const}\ highsc\_entry\ \&\ b);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00041\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{highscores_8h_a32af54fa3ffc445a803e1f18c675fab7}{highscores\_sort}}(highsc\_table\ \&\ table);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00051\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{highscores_8h_a462e76e0a3f1341006c7ec2fb49db3d1}{highscores\_insert\_entry\_into}}(\textcolor{keyword}{const}\ highsc\_entry\ \&\ entry,\ highsc\_table\ \&\ table);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00059\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{highscores_8h_a27e066ca3a814ec3abb0995258c88e82}{highscores\_saveto}}(\textcolor{keyword}{const}\ highsc\_table\ \&\ table,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&\ filename);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00068\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{highscores_8h_ab3211d872b2d0f970e0047d9599081cf}{highscores\_loadto}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&\ filename,\ highsc\_table\ \&\ table);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

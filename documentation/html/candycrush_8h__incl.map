@@ -1,0 +1,17 @@
+<map id="candycrush.h" name="candycrush.h">
+<area shape="rect" id="Node000001" title="Fichier header du gameplay." alt="" coords="127,5,235,31"/>
+<area shape="rect" id="Node000002" href="$language_8h.html" title="Fichier header de traductions des textes." alt="" coords="134,79,229,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="184,31,184,65,179,65,179,31"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,225,85,251"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="156,106,121,126,87,154,68,183,55,213,50,211,63,181,83,150,118,122,153,102"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="197,225,248,251"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="187,104,218,211,213,213,182,105"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="261,152,334,177"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="201,102,268,142,265,147,199,106"/>
+<area shape="rect" id="Node000006" href="$typeList_8h.html" title="Les types ou struct custom utilisés par les autres scripts." alt="" coords="98,152,185,177"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="177,106,157,141,152,139,172,103"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="127,180,74,219,71,215,124,175"/>
+<area shape="poly" id="edge8_Node000006_Node000004" title=" " alt="" coords="156,175,201,214,197,218,153,179"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="110,225,173,251"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="144,178,144,212,139,212,139,178"/>
+</map>

@@ -1,0 +1,169 @@
+\doxysection{highscores.\+h File Reference}
+\hypertarget{highscores_8h}{}\label{highscores_8h}\index{highscores.h@{highscores.h}}
+
+
+Fichier header pour le fonctionnement de la table des high scores.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+Include dependency graph for highscores.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=262pt]{highscores_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=249pt]{highscores_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{highscores_8h_a0e2cc2a36c3a13257dbdd716c3ff998a}\label{highscores_8h_a0e2cc2a36c3a13257dbdd716c3ff998a} 
+\#define {\bfseries HIGHSC\+\_\+\+MAX\+\_\+\+PLAYERS}~10
+\item 
+\Hypertarget{highscores_8h_a671ce6107f5e3abdd715466b1ceace92}\label{highscores_8h_a671ce6107f5e3abdd715466b1ceace92} 
+\#define {\bfseries HIGHSC\+\_\+\+FILENAME}~"{}highscores.\+hs"{}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{highscores_8h_aa3d6e08e21360ff88d4a3d07279387b7}\label{highscores_8h_aa3d6e08e21360ff88d4a3d07279387b7} 
+using {\bfseries highsc\+\_\+entry} = pair$<$ string, size\+\_\+t $>$
+\item 
+\Hypertarget{highscores_8h_a88a2a23266c970cec536ac7f86708c18}\label{highscores_8h_a88a2a23266c970cec536ac7f86708c18} 
+using {\bfseries highsc\+\_\+table} = vector$<$ highsc\+\_\+entry $>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{highscores_8h_a902ab2328a72db6c13f8a05e1cdc9baa}{highscores\+\_\+sort\+\_\+condition}} (const highsc\+\_\+entry \&a, const highsc\+\_\+entry \&b)
+\begin{DoxyCompactList}\small\item\em Prédicat pour la procédure {\ttfamily highscores\+\_\+sort} de tri d\textquotesingle{}une table de highscores. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{highscores_8h_a32af54fa3ffc445a803e1f18c675fab7}{highscores\+\_\+sort}} (highsc\+\_\+table \&table)
+\begin{DoxyCompactList}\small\item\em Trie une table de highscores dans l\textquotesingle{}ordre décroissant de valeur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{highscores_8h_a462e76e0a3f1341006c7ec2fb49db3d1}{highscores\+\_\+insert\+\_\+entry\+\_\+into}} (const highsc\+\_\+entry \&entry, highsc\+\_\+table \&table)
+\begin{DoxyCompactList}\small\item\em Ajoute un nouveau joueur dans la table des highscores. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{highscores_8h_a27e066ca3a814ec3abb0995258c88e82}{highscores\+\_\+saveto}} (const highsc\+\_\+table \&table, const string \&filename)
+\begin{DoxyCompactList}\small\item\em Sauvegarde une table de high scores dans un fichier {\ttfamily .hs} (.highscore). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{highscores_8h_ab3211d872b2d0f970e0047d9599081cf}{highscores\+\_\+loadto}} (const string \&filename, highsc\+\_\+table \&table)
+\begin{DoxyCompactList}\small\item\em Charge une table de highscores vers une table {\ttfamily highsc\+\_\+table}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Fichier header pour le fonctionnement de la table des high scores. 
+
+\begin{DoxyAuthor}{Author}
+Alexandre SBEGHEN 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+26/12/2025 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+1 
+\end{DoxyVersion}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{highscores_8h_a462e76e0a3f1341006c7ec2fb49db3d1}\label{highscores_8h_a462e76e0a3f1341006c7ec2fb49db3d1} 
+\index{highscores.h@{highscores.h}!highscores\_insert\_entry\_into@{highscores\_insert\_entry\_into}}
+\index{highscores\_insert\_entry\_into@{highscores\_insert\_entry\_into}!highscores.h@{highscores.h}}
+\doxysubsubsection{\texorpdfstring{highscores\_insert\_entry\_into()}{highscores\_insert\_entry\_into()}}
+{\footnotesize\ttfamily void highscores\+\_\+insert\+\_\+entry\+\_\+into (\begin{DoxyParamCaption}\item[{const highsc\+\_\+entry \&}]{entry,  }\item[{highsc\+\_\+table \&}]{table }\end{DoxyParamCaption})}
+
+
+
+Ajoute un nouveau joueur dans la table des highscores. 
+
+La table est supposée triée par ordre décroissant de valeur, et la paire est insérée à la bonne position.
+
+
+\begin{DoxyParams}{Parameters}
+{\em entry} & La paire {\ttfamily highsc\+\_\+table} (nom, score) à insérer dans la table. \\
+\hline
+{\em table} & La table {\ttfamily highsc\+\_\+table} dans laquelle la paire sera insérée. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{highscores_8h_ab3211d872b2d0f970e0047d9599081cf}\label{highscores_8h_ab3211d872b2d0f970e0047d9599081cf} 
+\index{highscores.h@{highscores.h}!highscores\_loadto@{highscores\_loadto}}
+\index{highscores\_loadto@{highscores\_loadto}!highscores.h@{highscores.h}}
+\doxysubsubsection{\texorpdfstring{highscores\_loadto()}{highscores\_loadto()}}
+{\footnotesize\ttfamily bool highscores\+\_\+loadto (\begin{DoxyParamCaption}\item[{const string \&}]{filename,  }\item[{highsc\+\_\+table \&}]{table }\end{DoxyParamCaption})}
+
+
+
+Charge une table de highscores vers une table {\ttfamily highsc\+\_\+table}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Le nom du fichier depuis lequel les données seront chargées. \\
+\hline
+{\em table} & La table vers laquelle les scores seront transférés. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Si le fichier a bien été chargé 
+\end{DoxyReturn}
+\Hypertarget{highscores_8h_a27e066ca3a814ec3abb0995258c88e82}\label{highscores_8h_a27e066ca3a814ec3abb0995258c88e82} 
+\index{highscores.h@{highscores.h}!highscores\_saveto@{highscores\_saveto}}
+\index{highscores\_saveto@{highscores\_saveto}!highscores.h@{highscores.h}}
+\doxysubsubsection{\texorpdfstring{highscores\_saveto()}{highscores\_saveto()}}
+{\footnotesize\ttfamily void highscores\+\_\+saveto (\begin{DoxyParamCaption}\item[{const highsc\+\_\+table \&}]{table,  }\item[{const string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Sauvegarde une table de high scores dans un fichier {\ttfamily .hs} (.highscore). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & La table {\ttfamily highsc\+\_\+table} à sauvegarder. \\
+\hline
+{\em filename} & Le nom du fichier dans lequel sera enregistré les scores. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{highscores_8h_a32af54fa3ffc445a803e1f18c675fab7}\label{highscores_8h_a32af54fa3ffc445a803e1f18c675fab7} 
+\index{highscores.h@{highscores.h}!highscores\_sort@{highscores\_sort}}
+\index{highscores\_sort@{highscores\_sort}!highscores.h@{highscores.h}}
+\doxysubsubsection{\texorpdfstring{highscores\_sort()}{highscores\_sort()}}
+{\footnotesize\ttfamily void highscores\+\_\+sort (\begin{DoxyParamCaption}\item[{highsc\+\_\+table \&}]{table }\end{DoxyParamCaption})}
+
+
+
+Trie une table de highscores dans l\textquotesingle{}ordre décroissant de valeur. 
+
+Le premier élément sera le meilleur joueur, le deuxième sera le deuxième meilleur joueur, etc.
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & La table {\ttfamily highsc\+\_\+table} à trier. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{highscores_8h_a902ab2328a72db6c13f8a05e1cdc9baa}\label{highscores_8h_a902ab2328a72db6c13f8a05e1cdc9baa} 
+\index{highscores.h@{highscores.h}!highscores\_sort\_condition@{highscores\_sort\_condition}}
+\index{highscores\_sort\_condition@{highscores\_sort\_condition}!highscores.h@{highscores.h}}
+\doxysubsubsection{\texorpdfstring{highscores\_sort\_condition()}{highscores\_sort\_condition()}}
+{\footnotesize\ttfamily bool highscores\+\_\+sort\+\_\+condition (\begin{DoxyParamCaption}\item[{const highsc\+\_\+entry \&}]{a,  }\item[{const highsc\+\_\+entry \&}]{b }\end{DoxyParamCaption})}
+
+
+
+Prédicat pour la procédure {\ttfamily highscores\+\_\+sort} de tri d\textquotesingle{}une table de highscores. 
+
+Compare deux éléments de la table des highscores pour effectuer le tri décroissant.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & La première paire {\ttfamily highsc\+\_\+entry} de la comparaison. \\
+\hline
+{\em b} & La seconde paire {\ttfamily highsc\+\_\+entry} de la comparaison. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Le résultat de la comparison {\ttfamily score de a \texorpdfstring{$>$}{>} score de b}. 
+\end{DoxyReturn}
